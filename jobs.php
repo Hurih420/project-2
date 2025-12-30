@@ -1,4 +1,4 @@
-$body_id = "Jobs_page";
+$body_id = "Jobs_Page";
 <?php include 'header.inc'; ?>
 
             <aside>

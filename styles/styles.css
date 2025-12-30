@@ -329,6 +329,14 @@ body#ApplyPage {
 #ApplyPage fieldset:last-of-type p:last-child {
     text-align: center;
 }
+form label {
+    display: block;
+    margin-top: 10px;
+}
+
+form input, form select {
+    width: 100%;
+}
 
 /*jobs.html css*/
 body#Jobs_Page {

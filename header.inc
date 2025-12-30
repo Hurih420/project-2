@@ -7,7 +7,7 @@
         <meta name="keywords" content="Cybersecurity, Ethical Hacker, Security Analyst, Threat Hunter, One Studio, Security Jobs">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="refresh" content="300">
-        <link rel="stylesheet" href="styles/styles.css">
+        <link rel="stylesheet" href="styles\styles.css">
         <title>One Studio Cybersecurity Specialists</title>
     </head>
 
@@ -28,5 +28,3 @@
             </ul>
         </nav>
     </header>
-
-    <main>

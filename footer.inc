@@ -1,5 +1,4 @@
-        </main>
-        <footer>
+         <footer>
             <p>&copy; 2025 One Studio Cybersecurity Specialists.</p>
             <p>
             Project link:
