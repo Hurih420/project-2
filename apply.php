@@ -1,5 +1,7 @@
-$body_id = "ApplyPage";
-<?php include 'header.inc'; ?>
+<?php
+$body_id="ApplyPage";
+include 'header.inc';
+?>
 
 <main>
 <section>
@@ -53,13 +55,13 @@ $body_id = "ApplyPage";
 <legend>Address Details</legend>
 
 <label for="street">Street Address</label>
-<input type="text" id="street" name="street" required>
+<input type="text" id="street" name="street" maxlength="40" required>
 
 <label for="suburb">Suburb</label>
-<input type="text" id="suburb" name="suburb" required>
+<input type="text" id="suburb" name="suburb" maxlength="40" required>
 
 <label for="state">State</label>
-<input type="text" id="state" name="state" required>
+<input type="text" id="state" name="state" maxlength="10" required>
 
 <label for="postcode">Postcode</label>
 <input type="text" id="postcode" name="postcode" pattern="^\d{4}$" required>
@@ -74,14 +76,10 @@ $body_id = "ApplyPage";
     <option value="Al Shamal">Al Shamal</option>
     <option value="Mesaieed">Mesaieed</option>
     <option value="Ras Laffan">Ras Laffan</option>
-    <option value="Lusail">Lusail</option>
-    <option value="Msheireb">Msheireb</option>
-    <option value="Al Rayyan">Al Rayyan</option>
-    <option value="Al Shahaniya">Al Shahaniya</option>
-    <option value="Umm Salal">Umm Salal</option>
-    <option value="Al Sadd">Al Sadd</option>
-    <option value="Al Zubarah">Al Zubarah</option>
 </select>
+
+<label for="zone">Zone</label>
+<input type="text" id="zone" name="zone" pattern="^\d{2}$" required>
 </fieldset>
 
 <fieldset>
