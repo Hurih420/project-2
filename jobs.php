@@ -1,5 +1,8 @@
+<?php
 $body_id = "Jobs_Page";
-<?php include 'header.inc'; ?>
+include 'header.inc';
+?>
+
 
             <aside>
                 <h2>About One Studio</h2>

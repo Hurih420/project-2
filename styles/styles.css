@@ -639,5 +639,89 @@ figcaption {
     #about-page section,#about-page aside{padding:20px;}
     #about-page section::before,#about-page aside::before,#about-page table::before{width:100px;height:100px;top:-20px;right:-20px;}
 }
+/*manage.php css*/
+#ManagePage fieldset {
+     border: 1px solid #e0e0e0;
+    padding: 16px 18px 20px;
+    border-radius: 12px;
+    background-color: #fafafa;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+#ManagePage legend {
+    font-weight: 600;
+    color: #00704A;
+    padding: 0 4px;
+}
 
+#ManagePage label {
+    display: block;
+    margin-bottom: 6px;
+}
+
+#ManagePage input[type="text"],
+#ManagePage select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    margin-bottom: 12px;
+    border: 1px solid #b0c4de;
+    border-radius: 8px;
+}
+
+#ManagePage button {
+    background-color: #00704A;
+    color: white;
+    border-radius: 999px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#ManagePage button:hover {
+    background-color: #005c3c;
+    transform: translateY(-1px) scale(1.02);
+}
+.message {
+    padding: 14px 18px;
+    border-radius: 10px;
+    margin: 16px 0;
+    font-weight: 600;
+}
+
+.message.success {
+    background-color: #e6ffed;
+    border-left: 6px solid #00704A;
+}
+
+.message.error {
+    background-color: #ffe6e6;
+    border-left: 6px solid darkred;
+}
+
+.message ul {
+    margin: 0;
+    padding-left: 18px;
+}
+#ManagePage table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#ManagePage th,
+#ManagePage td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+#ManagePage thead {
+    background-color: #00704A;
+    color: white;
+}
+
+#ManagePage tr:hover {
+    background-color: #f3f7fa;
+}
 

@@ -1,5 +1,8 @@
+<?php
 $body_id = "HomePage";
-<?php include 'header.inc'; ?>
+include 'header.inc';
+?>
+
         
         <main>
 

@@ -135,19 +135,21 @@ mysqli_close($conn);
   <h1>Manage EOIs</h1>
 
   <?php if(count($errors)>0): ?>
-    <div>
-      <h2>Errors</h2>
-      <ul>
-        <?php foreach($errors as $e): ?>
-          <li><?php echo $e; ?></li>
-        <?php endforeach; ?>
-      </ul>
-    </div>
+  <div class="message error">
+    <ul>
+      <?php foreach($errors as $e): ?>
+        <li><?php echo $e; ?></li>
+      <?php endforeach; ?>
+    </ul>
+  </div>
   <?php endif; ?>
 
   <?php if($success!==""): ?>
-    <p><strong><?php echo $success; ?></strong></p>
+  <div class="message success">
+    <?php echo $success; ?>
+  </div>
   <?php endif; ?>
+
 
   <h2>Search</h2>
   <form method="get" action="manage.php" novalidate="novalidate">
@@ -187,7 +189,7 @@ mysqli_close($conn);
   <?php endif; ?>
 
   <?php if(count($results)>0): ?>
-    <table border="1" cellpadding="8" cellspacing="0">
+    <table>
       <thead>
         <tr>
           <th>EOI #</th>
