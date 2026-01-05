@@ -639,23 +639,31 @@ figcaption {
     #about-page section,#about-page aside{padding:20px;}
     #about-page section::before,#about-page aside::before,#about-page table::before{width:100px;height:100px;top:-20px;right:-20px;}
 }
+
 /*manage.php css*/
+#ManagePage main {
+    padding: 1rem;
+}
+
 #ManagePage fieldset {
-     border: 1px solid #e0e0e0;
+    border: 1px solid #e0e0e0;
     padding: 16px 18px 20px;
     border-radius: 12px;
     background-color: #fafafa;
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    margin-bottom: 24px;
 }
+
 #ManagePage legend {
     font-weight: 600;
     color: #00704A;
-    padding: 0 4px;
+    padding: 0 6px;
 }
 
 #ManagePage label {
     display: block;
     margin-bottom: 6px;
+    font-weight: 600;
 }
 
 #ManagePage input[type="text"],
@@ -666,6 +674,7 @@ figcaption {
     margin-bottom: 12px;
     border: 1px solid #b0c4de;
     border-radius: 8px;
+    font-size: 1rem;
 }
 
 #ManagePage button {
@@ -676,12 +685,14 @@ figcaption {
     border: none;
     cursor: pointer;
     transition: all 0.2s ease;
+    font-size: 1rem;
 }
 
 #ManagePage button:hover {
     background-color: #005c3c;
     transform: translateY(-1px) scale(1.02);
 }
+
 .message {
     padding: 14px 18px;
     border-radius: 10px;
@@ -703,17 +714,12 @@ figcaption {
     margin: 0;
     padding-left: 18px;
 }
+
 #ManagePage table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-}
-
-#ManagePage th,
-#ManagePage td {
-    padding: 12px;
-    border-bottom: 1px solid #ddd;
-    text-align: left;
+    background-color: white;
 }
 
 #ManagePage thead {
@@ -721,7 +727,70 @@ figcaption {
     color: white;
 }
 
-#ManagePage tr:hover {
+#ManagePage th,
+#ManagePage td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    vertical-align: top;
+}
+
+#ManagePage tbody tr:hover {
     background-color: #f3f7fa;
 }
 
+#ManagePage td form {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+#ManagePage td form select {
+    min-width: 110px;
+}
+
+@media (max-width: 768px) {
+
+    #ManagePage table,
+    #ManagePage thead,
+    #ManagePage tbody,
+    #ManagePage tr {
+        display: block;
+    }
+
+    #ManagePage thead {
+        display: none;
+    }
+
+    #ManagePage tr {
+        background-color: #fafafa;
+        border-radius: 10px;
+        padding: 12px;
+        margin-bottom: 16px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+
+    #ManagePage td {
+        display: block;
+        padding: 6px 0;
+        border: none;
+        white-space: normal;
+    }
+
+    #ManagePage td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: #00704A;
+        display: block;
+        margin-bottom: 2px;
+    }
+
+    #ManagePage td form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #ManagePage button {
+        width: 100%;
+    }
+}
