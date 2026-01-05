@@ -5,7 +5,7 @@ $body_id = "AdminLogin";
 include "header.inc";
 
 $admin_user = "against_all_odds";
-$admin_pass = "Niggers"; 
+$admin_pass = "123"; 
 
 $errors = [];
 
