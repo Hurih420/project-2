@@ -20,33 +20,6 @@ if (!$conn) {
 }
 mysqli_set_charset($conn, "utf8mb4");
 
-$create_sql = "
-CREATE TABLE IF NOT EXISTS eoi (
-  EOInumber INT AUTO_INCREMENT PRIMARY KEY,
-  job_ref VARCHAR(5) NOT NULL,
-  first_name VARCHAR(20) NOT NULL,
-  last_name VARCHAR(20) NOT NULL,
-  date_of_birth DATE NOT NULL,
-  gender ENUM('male','female') NOT NULL,
-  street_address VARCHAR(40) NOT NULL,
-  suburb VARCHAR(40) NOT NULL,
-  state VARCHAR(10) NOT NULL,
-  postcode VARCHAR(4) NOT NULL,
-  city VARCHAR(40) NOT NULL,
-  zone TINYINT UNSIGNED NOT NULL,
-  email VARCHAR(100) NOT NULL,
-  phone VARCHAR(8) NOT NULL,
-  skill1 VARCHAR(50),
-  skill2 VARCHAR(50),
-  skill3 VARCHAR(50),
-  other_skills TEXT,
-  status ENUM('New','Current','Final') NOT NULL DEFAULT 'New'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-";
-if (!mysqli_query($conn, $create_sql)) {
-    die("<h1>Database error</h1><p>Could not create/check EOI table.</p>");
-}
-
 $errors = [];
 
 $job_ref = sanitize($_POST["job_reference"] ?? "");
