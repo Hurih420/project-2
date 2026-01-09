@@ -3,7 +3,7 @@ require_once("settings.php");
 $body_id="ManagePage";
 include "header.inc";
 
-if(!isset($_SESSION["is_admin"])){
+if(empty($_SESSION["is_admin"]) || $_SESSION["is_admin"] !== true){
   header("Location: simple_login.php");
   exit();
 }

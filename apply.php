@@ -33,13 +33,15 @@ include 'header.inc';
 <legend>Personal Information</legend>
 
 <label for="firstname">First Name</label>
-<input type="text" id="firstname" name="first_name" maxlength="20" required>
+<input type="text" id="firstname" name="first_name" maxlength="20" placeholder="Mark" 
+pattern="[A-Za-z'-]{1,20}" required>
 
 <label for="lastname">Last Name</label>
-<input type="text" id="lastname" name="last_name" maxlength="20" required>
+<input type="text" id="lastname" name="last_name" maxlength="20" placeholder="Evans" 
+pattern="[A-Za-z'-]{1,20}" required>
 
 <label for="dob">Date of Birth</label>
-<input type="text" id="dob" name="date_of_birth" placeholder="dd/mm/yyyy" required>
+<input type="date" id="dob" name="date_of_birth" placeholder="yyyy-mm-dd" required>
 </fieldset>
 
 <fieldset>
@@ -47,7 +49,7 @@ include 'header.inc';
 <input type="radio" id="male" name="gender" value="male" required>
 <label for="male">Male</label>
 
-<input type="radio" id="female" name="gender" value="female">
+<input type="radio" id="female" name="gender" value="female" required>
 <label for="female">Female</label>
 </fieldset>
 
@@ -64,7 +66,8 @@ include 'header.inc';
 <input type="text" id="state" name="state" maxlength="10" required>
 
 <label for="postcode">Postcode</label>
-<input type="text" id="postcode" name="postcode" pattern="^\d{4}$" required>
+<input type="text" id="postcode" name="postcode" pattern="^\d{4}$" title="Enter 4 digit 
+postcode" inputmode="numeric" required>
 
 <label for="city">City</label>
 <select id="city" name="city" required>
@@ -89,7 +92,8 @@ include 'header.inc';
 <input type="email" id="email" name="email" required>
 
 <label for="phone">Phone Number</label>
-<input type="tel" id="phone" name="phone" pattern="^\d{8}$" required>
+<input type="tel" inputmode="numeric" id="phone" name="phone" pattern="^\d{8}$"
+placeholder="7254 6786" required>
 </fieldset>
 
 <fieldset>
@@ -108,10 +112,13 @@ include 'header.inc';
 <label for="skill4">Other</label>
 
 <label for="otherSkills">Other Skills</label>
-<textarea id="otherSkills" name="other_skills" rows="4"></textarea>
+<textarea id="otherSkills" name="other_skills" rows="4" maxlength="200"></textarea>
 </fieldset>
 
-<button type="submit">Apply</button>
+<button type="submit" onclick="return confirm('Are you sure you want to proceed?')">
+Apply</button>
+<button type="reset">Reset</button>
+
 
 </form>
 </section>

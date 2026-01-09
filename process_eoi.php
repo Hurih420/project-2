@@ -13,6 +13,18 @@ $conn=@mysqli_connect($host,$user,$pwd,$dbname);
 if(!$conn){die("<h1>Database connection error</h1><p>Please try again later.</p>");}
 mysqli_set_charset($conn,"utf8mb4");
 
+function clean($data) {
+  return htmlspecialchars(trim($data));
+}
+
+$job_ref = clean($_POST["job_ref"]);
+$first_name = clean($_POST["first_name"]);
+$last_name = clean($_POST["last_name"]);
+$email = clean($_POST["email"]);
+$phone = clean($_POST["phone"]);
+
+
+
 /*If the table doesn't exist, this'll make one*/
 mysqli_query($conn,"CREATE TABLE IF NOT EXISTS eoi(
 EOInumber INT NOT NULL AUTO_INCREMENT,
