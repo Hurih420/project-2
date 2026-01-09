@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once("settings.php");
 $body_id="ManagePage";
 include "header.inc";
@@ -80,13 +81,13 @@ if($_SERVER["REQUEST_METHOD"]==="POST" && isset($_POST["action"]) && $_POST["act
 }
 
 /*Filtering*/
-$search_eoi=sanitize($_GET["eoi"] ?? "");
-$search_job=sanitize($_GET["job_ref"] ?? "");
-$search_first=sanitize($_GET["first_name"] ?? "");
-$search_last=sanitize($_GET["last_name"] ?? "");
-$search_status=sanitize($_GET["status"] ?? "");
-$sort_by=sanitize($_GET["sort_by"] ?? "EOInumber");
-$sort_dir=sanitize($_GET["sort_dir"] ?? "DESC");
+$search_eoi=sanitize(trim($_GET["eoi"] ?? ""));
+$search_job=sanitize(trim($_GET["job_ref"] ?? ""));
+$search_first=sanitize(trim($_GET["first_name"] ?? ""));
+$search_last=sanitize(trim($_GET["last_name"] ?? ""));
+$search_status=sanitize(trim($_GET["status"] ?? ""));
+$sort_by=sanitize(trim($_GET["sort_by"] ?? "EOInumber"));
+$sort_dir=sanitize(trim($_GET["sort_dir"] ?? "DESC"));
 
 $allowed_sort=["EOInumber","job_ref","first_name","last_name","status"];
 if(!in_array($sort_by,$allowed_sort,true)) $sort_by="EOInumber";
@@ -107,7 +108,7 @@ if($search_eoi!==""){
   }
 }
 
-if($search_job!==""){
+if($search_job!=="" && $search_job!=="Any"){
   if(!in_array($search_job,$allowed_job_refs,true)){
     add_error($errors,"Job reference must be EHK01, SEC02, or THH03.");
   }else{
@@ -204,7 +205,7 @@ mysqli_close($conn);
       </select>
 
       <input type="hidden" name="action" value="delete_by_job">
-      <button type="submit">Delete All</button>
+      <button type="submit" onclick="return confirm('Are you sure you want to delete all EOIs for this job?');">Delete All</button>
     </fieldset>
   </form>
 
@@ -290,11 +291,11 @@ mysqli_close($conn);
           <td data-label="EOI #"><?php echo (int)$r["EOInumber"]; ?></td>
           <td data-label="Job Ref"><?php echo sanitize($r["job_ref"]); ?></td>
           <td data-label="Name"><?php echo sanitize($r["first_name"]." ".$r["last_name"]); ?></td>
-          <td data-label="DOB"><?php echo sanitize($r["date_of_birth"]); ?></td>
+          <td data-label="DOB"><?php echo date("d/m/Y", strtotime($r["date_of_birth"])); ?></td>
           <td data-label="Gender"><?php echo sanitize($r["gender"]); ?></td>
           <td data-label="City"><?php echo sanitize($r["city"]); ?></td>
-          <td data-label="Zone"><?php echo (int)$r["zone"]; ?></td>
-          <td data-label="Email"><?php echo sanitize($r["email"]); ?></td>
+          <td data-label="Zone"><?php echo is_numeric($r["zone"])?(int)$r["zone"]:"N/A"; ?></td>
+          <td data-label="Email"><?php echo sanitize(mb_strimwidth($r["email"],0,30,"...")); ?></td>
           <td data-label="Phone"><?php echo sanitize($r["phone"]); ?></td>
           <td data-label="Skills">
             <?php
@@ -303,7 +304,7 @@ mysqli_close($conn);
               if(!empty($r["skill2"])) $skills_out[]=$r["skill2"];
               if(!empty($r["skill3"])) $skills_out[]=$r["skill3"];
               if(!empty($r["other_skills"])) $skills_out[]="Other";
-              echo sanitize(implode(", ",$skills_out));
+              echo sanitize(implode(", ",$skills_out): "None");
             ?>
           </td>
           <td data-label="Status"><?php echo sanitize($r["status"]); ?></td>

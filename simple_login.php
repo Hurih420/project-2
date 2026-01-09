@@ -1,4 +1,13 @@
 <?php
+/*Prevent login page from being cached*/
+header("Cache-Control: no-store, no-cache, must-revalidate");
+header("Pragma: no-cache");
+
+session_set_cookie_params([
+  "httponly" => true,               /*Malicious JavasScript cannot access cookie*/
+  "secure"   => isset($_SERVER['HTTPS']), /*Cookie sent only over HTTPS(protected),not HTTP*/
+  "samesite" => "Strict"            /*Cookies are sent ONLY when user is directly on your site*/ 
+]);
 session_start();
 require_once("settings.php");
 
@@ -27,7 +36,10 @@ if($_SERVER["REQUEST_METHOD"]==="POST"){
 
   if($username==="" || $password===""){
     $error="Please enter username and password.";
-  }else{
+  }
+  elseif (strlen($password) < 8) {
+    $error = "Invalid login."; /*Minimum password length=8 is applied*/
+}else{
     $stmt=mysqli_prepare($conn,"SELECT manager_id,username,password_hash,failed_attempts,lockout_until FROM managers WHERE username=?");
     mysqli_stmt_bind_param($stmt,"s",$username);
     mysqli_stmt_execute($stmt);
@@ -36,18 +48,23 @@ if($_SERVER["REQUEST_METHOD"]==="POST"){
     mysqli_stmt_close($stmt);
 
     if(!$row){
+    $fakeHash = '$2y$10$usesomesillystringfore7hnbRJHxXVLeakoG8K30oukPsA.ztMG';
+    password_verify($password, $fakeHash); /*constant-time check*/
       $error="Invalid login.";
     }else{
-      $locked=false;
-      if(!empty($row["lockout_until"])){
-        $lock_ts=strtotime($row["lockout_until"]);
-        if($lock_ts && $lock_ts>time()) $locked=true;
-      }
+     $locked = (
+    $row["lockout_until"] !== null &&
+    strtotime($row["lockout_until"]) > time()
+);
+
 
       if($locked){
         $error="Account locked. Try again later.";
       }else{
         if(password_verify($password,$row["password_hash"])){
+
+          session_regenerate_id(true);
+
           $stmt=mysqli_prepare($conn,"UPDATE managers SET failed_attempts=0,lockout_until=NULL WHERE manager_id=?");
           mysqli_stmt_bind_param($stmt,"i",$row["manager_id"]);
           mysqli_stmt_execute($stmt);
@@ -103,10 +120,12 @@ mysqli_close($conn);
       <legend>Login</legend>
 
       <label for="username">Username</label>
-      <input type="text" id="username" name="username" maxlength="50" required>
+      <input type="text" id="username" name="username" maxlength="50"
+       value="<?php echo htmlspecialchars($username ?? ''); ?>" required>
+
 
       <label for="password">Password</label>
-      <input type="password" id="password" name="password" required>
+      <input type="password" id="password" name="password" autocomplete="off" required>
 
       <button type="submit">Login</button>
     </fieldset>

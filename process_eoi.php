@@ -64,6 +64,7 @@ $city=sanitize($_POST["city"] ?? "");
 $zone_raw=sanitize($_POST["zone"] ?? "");
 $email=sanitize($_POST["email"] ?? "");
 $phone=sanitize($_POST["phone"] ?? "");
+$phone = preg_replace('/\D/', '', $phone);
 $skills=$_POST["skills"] ?? [];
 $other_skills=sanitize($_POST["other_skills"] ?? "");
 
@@ -74,10 +75,16 @@ if(!in_array($job_ref,$allowed_job_refs,true)) add_error($errors,"Invalid job re
 if($first_name==="" || !preg_match("/^[A-Za-z\s'-]{1,20}$/",$first_name)) add_error($errors,"Invalid first name.");
 if($last_name==="" || !preg_match("/^[A-Za-z\s'-]{1,20}$/",$last_name)) add_error($errors,"Invalid last name.");
 
-$dob_dt=DateTime::createFromFormat("d/m/Y",$dob_raw);
-$dob_ok=$dob_dt && $dob_dt->format("d/m/Y")===$dob_raw;
-$dob_sql=$dob_ok ? $dob_dt->format("Y-m-d") : "";
-if(!$dob_ok) add_error($errors,"Invalid date of birth. Use dd/mm/yyyy.");
+$dob_dt = DateTime::createFromFormat("d/m/Y", $dob_raw);
+$dob_ok = $dob_dt && $dob_dt->format("d/m/Y") === $dob_raw;
+if ($dob_ok) {
+    $today = new DateTime();
+    if ($dob_dt > $today) add_error($errors, "Date of birth cannot be in the future.");
+    $dob_sql = $dob_dt->format("Y-m-d");
+} else {
+    add_error($errors, "Invalid date of birth. Use dd/mm/yyyy.");
+    $dob_sql = "";
+} //Avoids invalid Date Of Birth inputs
 
 if($gender!=="male" && $gender!=="female") add_error($errors,"Please select a gender.");
 
@@ -92,10 +99,13 @@ add_error($errors,"Invalid zone. Must be 2 digits.");
 $zone=0;
 }else{$zone=(int)$zone_raw;}
 
+$email = strtolower($email);
 if($email==="" || !filter_var($email,FILTER_VALIDATE_EMAIL)) add_error($errors,"Invalid email address.");
+//Prevents uppercase emails as duplicates
 if(!preg_match("/^\d{8}$/",$phone)) add_error($errors,"Invalid phone number. Must be 8 digits.");
 
 if(!is_array($skills)) $skills=[];
+$skills=array_values(array_unique(array_map("sanitize",$skills)));
 $skills=array_values(array_unique(array_map("sanitize",$skills)));
 if(count($skills)<1) add_error($errors,"Select at least one technical skill.");
 if(count($skills)>3) add_error($errors,"Select up to three technical skills.");
@@ -116,6 +126,24 @@ foreach($errors as $e) echo "<li>".$e."</li>";
 echo "</ul><p><a href='apply.php'>Go back to the form</a></p></body></html>";
 exit();
 }
+$check = mysqli_prepare($conn, "SELECT EOInumber FROM eoi WHERE email=? AND job_ref=?");
+mysqli_stmt_bind_param($check, "ss", $email, $job_ref);
+mysqli_stmt_execute($check);
+mysqli_stmt_store_result($check);
+if(mysqli_stmt_num_rows($check) > 0){
+    add_error($errors, "You have already applied for this job with this email.");
+}
+mysqli_stmt_close($check);
+
+$last_submission_stmt = mysqli_prepare($conn, "SELECT EOInumber, DATE_SUB(NOW(), INTERVAL 1 MINUTE) as last_time FROM eoi WHERE email=? ORDER BY EOInumber DESC LIMIT 1");
+mysqli_stmt_bind_param($last_submission_stmt, "s", $email);
+mysqli_stmt_execute($last_submission_stmt);
+mysqli_stmt_bind_result($last_submission_stmt, $last_eoi, $last_time);
+mysqli_stmt_fetch($last_submission_stmt);
+if($last_eoi && strtotime($last_time) > time() - 60){
+    add_error($errors, "You must wait at least 1 minute before submitting another application.");
+}
+mysqli_stmt_close($last_submission_stmt);
 
 $stmt=mysqli_prepare($conn,"
 INSERT INTO eoi
@@ -165,8 +193,13 @@ mysqli_close($conn);
 
 echo "<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'><title>EOI Submitted</title></head><body>";
 echo "<h1>Application Submitted</h1>";
-echo "<p>Your application has been received.</p>";
+echo "<p>Thank you, ".htmlspecialchars($first_name).", for your application.</p>";
+echo "<p>Job applied for: ".htmlspecialchars($job_ref)."</p>";
+echo "<p>Confirmation email has been sent to: ".htmlspecialchars($email)."</p>"; 
 echo "<p><strong>Your EOI Number:</strong> ".(int)$eoi_number."</p>";
+echo "<p><strong>Submission date:</strong> ".date('d/m/Y H:i')."</p>";
+echo "<p>We will review your application and get back to you soon.</p>";
+echo "<p><a href='apply.php'>Submit the application again</a></p>";
 echo "<p><a href='index.php'>Return to Home</a></p>";
 echo "</body></html>";
 ?>
