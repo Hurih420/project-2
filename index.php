@@ -46,20 +46,21 @@ include 'header.inc';
             </section>
 
             <section>
-                <h2>Start Your Journey right now with One Studio</h2>
-                <p>
-                    If you think you have what it takes, visit our Apply page to submit your application. If you want
-                    more information about each role, review the details on our Job Opportunities page.
-                <div class="cta-cards">
-                    <div class="cta-card">
-                        <a href="apply.php">Apply Now</a>
-                     </div>
+            <h2>Start Your Journey right now with One Studio</h2>
+            <p>
+                If you think you have what it takes, visit our Apply page to submit your application. If you want
+                more information about each role, review the details on our Job Opportunities page.
+            </p>
 
-                    <div class="cta-card">
-                        <a href="jobs.php">View Job Opportunities</a>
-                    </div>
+            <div class="cta-cards">
+                <div class="cta-card">
+                <a href="apply.php">Apply Now</a>
                 </div>
 
+                <div class="cta-card">
+                <a href="jobs.php">View Job Opportunities</a>
+                </div>
+            </div>
             </section>
         </main>
 

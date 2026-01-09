@@ -526,7 +526,7 @@ some good simplified movement to it like some hover effects and good alignment"*
 }
 /*about.html css*/
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"Segoe UI",sans-serif;background:#eef2f5;color:#1a1a1a;line-height:1.6;}
+#about-page{font-family:"Segoe UI",sans-serif;background:#eef2f5;color:#1a1a1a;line-height:1.6;}
 
 
 #about-page main{
@@ -793,4 +793,76 @@ figcaption {
     #ManagePage button {
         width: 100%;
     }
+}
+
+
+/*We can change the CSS for login later on, for now I'm keep it like this.*/
+#LoginPage main {
+    max-width: 600px;
+    margin: 32px auto 40px;
+    padding: 24px 28px 32px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+#LoginPage fieldset {
+    border: 1px solid #e0e0e0;
+    padding: 16px 18px 20px;
+    border-radius: 12px;
+    background-color: #fafafa;
+}
+
+#LoginPage label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+#LoginPage input[type="text"],
+#LoginPage input[type="password"] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    margin-bottom: 12px;
+    border: 1px solid #b0c4de;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+#LoginPage button {
+    background-color: #00704A;
+    color: white;
+    border-radius: 999px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+}
+
+#LoginPage button:hover {
+    background-color: #005c3c;
+    transform: translateY(-1px) scale(1.02);
+}
+
+/*Added this to fix the checkbox alignment*/
+#ApplyPage input[type="checkbox"],
+#ApplyPage input[type="radio"] {
+    width: auto;
+    margin: 0 10px 0 0;
+    vertical-align: middle;
+}
+
+#ApplyPage input[type="checkbox"] + label,
+#ApplyPage input[type="radio"] + label {
+    display: inline-block;
+    margin: 0 0 10px 0;
+    vertical-align: middle;
+}
+
+/*Added this to make sure each option shows up in its own line*/
+#ApplyPage input[type="checkbox"] + label,
+#ApplyPage input[type="radio"] + label {
+    width: calc(100% - 30px);
 }

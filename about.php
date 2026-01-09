@@ -1,5 +1,8 @@
-$body_id = "about-page";
-<?php include 'header.inc'; ?>
+<?php
+$body_id="about-page";
+include "header.inc";
+?>
+
 
         <main>
             <section>

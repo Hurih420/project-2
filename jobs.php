@@ -1,8 +1,38 @@
 <?php
-$body_id = "Jobs_Page";
-include 'header.inc';
-?>
+require_once("settings.php");
+$body_id="Jobs_Page";
+include "header.inc";
 
+function esc($v){return htmlspecialchars((string)$v,ENT_QUOTES,"UTF-8");}
+
+$conn=@mysqli_connect($host,$user,$pwd,$dbname);
+if(!$conn){die("<h1>Database connection error</h1><p>Please try again later.</p>");}
+mysqli_set_charset($conn,"utf8mb4");
+
+/*Added this code to create the jobs table if it doesn't exist already*/
+mysqli_query($conn,"CREATE TABLE IF NOT EXISTS jobs(
+job_ref VARCHAR(5) NOT NULL,
+title VARCHAR(100) NOT NULL,
+description TEXT NOT NULL,
+PRIMARY KEY(job_ref)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci");
+
+/*Takes ther jobs and puts it in a array*/
+$jobs=[];
+$res=mysqli_query($conn,"SELECT job_ref,title,description FROM jobs");
+if($res){
+while($row=mysqli_fetch_assoc($res)){
+$jobs[$row["job_ref"]]=$row;
+}
+mysqli_free_result($res);
+}
+mysqli_close($conn);
+
+/*If the database for some reason is empty, it will display this (Added this to mainly help me)*/
+if(!isset($jobs["EHK01"])){$jobs["EHK01"]=["title"=>"Ethical Hacker","description"=>"Job details are currently unavailable."]; }
+if(!isset($jobs["SEC02"])){$jobs["SEC02"]=["title"=>"Security Analyst","description"=>"Job details are currently unavailable."]; }
+if(!isset($jobs["THH03"])){$jobs["THH03"]=["title"=>"Threat Hunter","description"=>"Job details are currently unavailable."]; }
+?>
 
             <aside>
                 <h2>About One Studio</h2>
@@ -22,11 +52,8 @@ include 'header.inc';
                     <img src="images/ethical-hacker.jpg" alt="Ethical Hacker">
                 </div>
                 <div class="job-text">
-                     <h2>Position Title: Ethical Hackers</h2>
-                        <p>Here, at <strong>One Studio</strong> our Ethical Hackers perform structured tests on systems by trying to
-                       infiltrate into theirnetwork to find weaknesses and vulnerabilities before criminals do. For example, 
-                       our cybsersecurity specialists may attempt to hack a company's website to check if client's data is exposed
-                       and then help fix the vulnerability.</p>
+                     <h2>Position Title: <?php echo esc($jobs["EHK01"]["title"]); ?></h2>
+                        <p><?php echo esc($jobs["EHK01"]["description"]); ?></p>
                     <h3>Key Responsibilities</h3>
                     <ul>
                         <li>Perform systematic evaluations on both networks and applications using both automated and manual 
@@ -60,7 +87,7 @@ include 'header.inc';
                         <li>Strong understanding of <strong>TCP/IP, VPNs, and routing</strong></li>
                         <li>Ability to detect and exploit vulnerabilities</li>
                         <li>Able to utilize penetration testing tools (<strong>Nmap, Burp Suite, Metasploit</strong>)</li>
-                        <li>Basic knowledge of programming languages and script (<strong>Python, Bash, PowerShell</strong>)></li>
+                        <li>Basic knowledge of programming languages and script (<strong>Python, Bash, PowerShell</strong>)</li>
                         <li>Strong analytical and problem-solving skills</li>
                 </ul>
                 <h3>Experience Requirements</h3>
@@ -86,11 +113,8 @@ include 'header.inc';
         <img src="images/security-analyst.jpg" alt="Job 2">
     </div>
     <div class="job-text">
-                <h2>Position Title: Security Analyst</h2>
-                <p>Here,at <strong>One Studio</strong> our Security Analyst workforce keep track of, detect, and investigate 
-                   security threats acrossthe organization's systems.For example, if unauthorized login activity is detected at
-                   midnight, our Security Analysts reviews logs, verifies if it's a threat, and escalates it to the incident
-                   response team.</p>
+                <h2>Position Title: <?php echo esc($jobs["SEC02"]["title"]); ?></h2>
+                <p><?php echo esc($jobs["SEC02"]["description"]); ?></p>
                 <h3>Key Responsibilities</h3>
                 <ul>
                     <li>Continuously monitor networks, systems, and data for suspicious activity and potential security breaches using 
@@ -145,11 +169,8 @@ include 'header.inc';
         <img src="images/threat-hunter.jpg" alt="Threat Hunter">
     </div>
     <div class="job-text">
-                <h2>Position Title: Threat Hunter</h2>
-                <p>Here,at <strong>One Studio</strong>,Threat Hunter proactively scout for hidden cyber threats in the network and 
-                   investigates unfamiliar activity. For example, they might trace suspicious login patterns to prevent potential 
-                   future intrusions.
-                </p>
+                <h2>Position Title: <?php echo esc($jobs["THH03"]["title"]); ?></h2>
+                <p><?php echo esc($jobs["THH03"]["description"]); ?></p>
                 <h3>Key Responsibilities</h3>
                 <ul>
                     <li>Constantly hunt for hidden, or unknown threats that automated solutions may miss, such as those from 
@@ -197,12 +218,13 @@ include 'header.inc';
                 </ol>
             </aside>
             <section>
-                <p>If you qualify for any of the above posts
-                    <div class="cta-cards">
-                        <div class="cta-card">
-                            <a href="apply.php">Apply Now</a>
-                        </div>
+            <p>If you qualify for any of the above posts</p>
+
+            <div class="cta-cards">
+                <div class="cta-card">
+                <a href="apply.php">Apply Now</a>
                 </div>
+            </div>
             </section>
         </main>
 <?php include 'footer.inc'; ?>

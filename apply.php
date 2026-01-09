@@ -104,6 +104,9 @@ include 'header.inc';
 <input type="checkbox" id="skill3" name="skills[]" value="Threat Hunting">
 <label for="skill3">Threat Hunting</label>
 
+<input type="checkbox" id="skill4" name="skills[]" value="Other">
+<label for="skill4">Other</label>
+
 <label for="otherSkills">Other Skills</label>
 <textarea id="otherSkills" name="other_skills" rows="4"></textarea>
 </fieldset>

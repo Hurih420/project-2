@@ -22,14 +22,5 @@ if (session_status() === PHP_SESSION_NONE) {
             <img src="images/GROUPLOGO.png" alt="One Studio logo" title="One Studio" loading="lazy" width="100" class="logo">
             <h2><strong>One Studio</strong></h2>
             <h1 class="page-banner">Explore Interesting Cyber Security Careers</h1>
-            <nav>
-                <ul>
-                    <li><a href="index.php">Home</a></li>
-                    <li><a href="apply.php">Apply</a></li>
-                    <li><a href="jobs.php">Job Opportunities</a></li>
-                    <li><a href="about.php">About</a></li>
-                    <li><a href="manage.php"Manage EOIs</ai></li>
-                    <li><a href="mailto:info@onestudio.com.au">Contact Us</a></li>
-                 </ul>
-            </nav>
+            <?php include "nav.inc"; ?>
         </header>
