@@ -6,7 +6,7 @@ include 'header.inc';
         <main>
 
             <section>
-                <h1>Looking for Cybersecurity Specialists</h1>
+                <h1><b><i><u>Looking for Cybersecurity Specialists</u></i></b></h1>
                 <p>
                     <strong>One Studio</strong> is looking for passionate and experienced 
                     cybersecurity professionals from all around the world.
@@ -22,10 +22,10 @@ include 'header.inc';
                 </p>
             </section>
             <section id="roles">
-                <h2>Brief Description of Our Cybersecurity Roles</h2>
+                <h2><b>Brief Description of Our Cybersecurity Roles</b></h2>
 
-                <article>
-                    <h3>Ethical Hacking</h3>
+                <article class="ethical-hacker">
+                    <h3><u>Ethical Hacking</u></h3>
                     <ul>
                         <li>Test computer systems, networks, and applications.</li>
                         <li>Identify vulnerabilities before attackers can exploit them.</li>
@@ -33,8 +33,8 @@ include 'header.inc';
                     </ul>
                 </article>
 
-                <article>
-                    <h3>Security Analysis</h3>
+                <article class="security-analyst">
+                    <h3><u>Security Analysis</u></h3>
                     <ul>
                         <li>Monitor endpoints and user behaviour data for suspicious activity.</li>
                         <li>Investigate alerts and incidents from security tools.</li>
@@ -42,8 +42,8 @@ include 'header.inc';
                     </ul>
                 </article>
 
-                <article>
-                    <h3>Threat Hunting</h3>
+                <article class="threat-hunter">
+                    <h3><u>Threat Hunting</u></h3>
                     <ul>
                         <li>Proactively search for hidden threats in networks and endpoints.
                         </li>
@@ -55,7 +55,7 @@ include 'header.inc';
                 </article>
             </section>
 
-            <section>
+            <section id="start">
                 <h2>Start Your Journey right now with One Studio</h2>
                 <p>
                     If you think you have what it takes, visit our Apply page to submit your 
@@ -65,16 +65,17 @@ include 'header.inc';
                 <p>
                 Applications are open until <time datetime="2026-01-31"><strong>31 January 2026</strong></time>.
                 </p>
-                <div class="cta-card">
-                    <a href="apply.php" class="cta-button" 
-                    aria-label="Apply for Cybersecurity Positions at One Studio">Apply Now        
-                    </a>
+                <div class="cta-cards">
+                    <div class="cta-card">
+                        <a href="apply.php" class="cta-button" 
+                        aria-label="Apply for Cybersecurity Positions at One Studio">Apply Now        
+                        </a>
+                    </div>
+                    <div class="cta-card">
+                        <a href="jobs.php" class="cta-button" 
+                        aria-label="Explore Cybersecurity Job Opportunities available at 
+                        One Studio "> View Job Opportunities
+                        </a>
+                    </div>
                 </div>
-                <div class="cta-card">
-                    <a href="jobs.php" class="cta-button" 
-                    aria-label="Explore Cybersecurity Job Opportunities available at 
-                    One Studio "> View Job Opportunities
-                    </a>
-                  </div>
-
 <?php include 'footer.inc'; ?>

@@ -33,13 +33,15 @@ header {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 25px 0; 
+    padding: 40px 0 60px 0;
     background: linear-gradient(-45deg, #00704A, #005f99, #00b37d, #004466);
     background-size: 400% 400%;
     animation: gradientMove 15s ease infinite;
     color: #fff;
     box-shadow: 0 6px 25px rgba(0,0,0,0.35);
 }
+
+
 @keyframes gradientMove {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -155,6 +157,11 @@ aside {
     font-size: 14px;
 }
 /*index.html css*/
+body {
+    line-height: 1.7;
+    font-size: 16px;
+}
+
 body#HomePage {
     background-image: url("images/IndexBackground.jpg");
     background-size: cover;
@@ -162,57 +169,350 @@ body#HomePage {
     background-position: center;
 }
 
+body#HomePage p {
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
 body#HomePage main {
-    background-color: white;
-    color: black ;
-    border-radius: 16px;
-    margin-top: 32px;
-    margin-bottom: 32px;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(255, 255, 255, 0.95);
+    color: #111;
+    padding: 32px;
 }
 
 body#HomePage h1,
 body#HomePage h2,
 body#HomePage h3 {
-    color: #ffffff;
+    color: #1e293b; 
 }
+
+body#HomePage section h1::after,
+body#HomePage section h2::after,
+body#HomePage section h3::after {
+    content: none;
+}
+
+body#HomePage h2 {
+    border-bottom: 2px solid #38bdf8;
+    padding-bottom: 6px;
+}
+
 
 body#HomePage a {
     color: #38bdf8;
 }
 
+body#HomePage h1 {
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+body#HomePage section {
+    margin-bottom: 48px;
+}
+
+body#HomePage section:not(:last-of-type) {
+    padding-bottom: 24px;
+}
+
+body#HomePage article {
+    background-color: #f8fafc;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 24px;
+}
+
+body#HomePage article h3 {
+    margin-top: 0;
+}
+
+body#HomePage ul {
+    padding-left: 20px;
+}
+
+body#HomePage li {
+    margin-bottom: 8px;
+}
+
+#start h2,
+#start p{
+    text-align: center;
+}
+
+body#HomePage section p {
+    margin-bottom: 1.5rem;
+}
+
+body#HomePage section h1::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: #38bdf8;
+    margin: 12px auto 0;
+    border-radius: 2px;
+}
+
+body#HomePage section:first-of-type p {
+    color: #111; 
+    text-decoration: none; 
+    transition: none; 
+}
+
+body#HomePage section:first-of-type p:hover {
+    color: #111; 
+    text-decoration: none; 
+    transform: none; 
+}
+
+body#HomePage section#start p {
+    color: #111; 
+    text-decoration: none;
+    transition: none;
+}
+
+body#HomePage section#start p:hover {
+    color: #111;
+    text-decoration: none;
+    transform: none;
+}
+
+@media (max-width: 768px) {
+    body#HomePage {
+        background-attachment: scroll;
+    }
+}
+
+#roles {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    grid-template-rows: auto auto;  
+    grid-gap: 30px; 
+    justify-items: center; 
+}
+
+#roles h2 {
+    width: 100%;          
+    text-align: center;    
+    margin-bottom: 30px;   
+    grid-column: 1 / -1;   
+}
+
+#roles article:first-of-type {
+    grid-column: 1 / -1; 
+    max-width: 360px;
+    width: 100%;
+}
+
+#roles article:nth-of-type(2) {
+    justify-self: start; 
+    max-width: 360px;
+    width: 100%;
+}
+
+#roles article:nth-of-type(3) {
+    justify-self: end; 
+    max-width: 360px;
+    width: 100%;
+}
+
+#roles article {
+    position: relative;
+    overflow: hidden;
+    border-radius: 14px;
+    background: #f8fafc;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    transition: transform 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease;
+    transform-style: preserve-3d;
+    border: 2px solid transparent;
+}
+
+/* Card heading */
+#roles article h3 {
+    text-align: center;
+    margin-bottom: 12px;
+    color: #1e293b;
+}
+
+/* Hover effect: lift + fold + pop */
+#roles article:hover {
+    transform: rotateX(6deg) rotateY(-6deg) scale(1.05);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25), inset 0 0 10px rgba(0,0,0,0.05);
+    border-color: #38bdf8; /* subtle neon-ish border glow */
+}
+
+/* Shimmer pseudo-element */
+#roles article::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 300%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(56,189,248,0.15), rgba(255,255,255,0), rgba(56,189,248,0.15));
+    transform: skewX(-20deg) scaleX(1);
+    transition: all 0.7s ease;
+    pointer-events: none;
+}
+
+/* Animate shimmer on hover */
+#roles article:hover::after {
+    left: 100%;
+}
+
+/* Optional: subtle pulse glow for the border */
+@keyframes pulseGlow {
+    0% { box-shadow: 0 20px 40px rgba(0,0,0,0.25), 0 0 0 rgba(56,189,248,0.3); }
+    50% { box-shadow: 0 20px 40px rgba(0,0,0,0.25), 0 0 15px rgba(56,189,248,0.5); }
+    100% { box-shadow: 0 20px 40px rgba(0,0,0,0.25), 0 0 0 rgba(56,189,248,0.3); }
+}
+
+#roles article:hover {
+    animation: pulseGlow 1.2s infinite;
+}
+
+/* Responsive: stack on mobile */
+@media (max-width: 768px) {
+    #roles article {
+        transform: none;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+        border-color: transparent;
+        animation: none;
+        margin: 15px auto;
+        width: 100%;
+        max-width: 360px;
+    }
+
+    #roles article::after {
+        display: none;
+    }
+}
+
+
+@media (max-width: 768px) {
+    #roles {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #roles article {
+        width: 100%;
+        max-width: 360px;
+        margin: 15px auto;
+    }
+}
+
+.ethical-hacker {
+    flex: 0 0 360px; 
+    margin: 0 auto 30px auto; 
+    background: #f8fafc;
+    border-radius: 14px;
+    padding: 24px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+}
+
+.ethical-hacker h3 {
+    text-align: center;
+    color: #1e293b;
+    margin-bottom: 12px;
+}
+
+.security-analyst,
+.threat-hunter {
+    flex: 1 1 300px;
+    max-width: 360px;
+    background: #f8fafc;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
 .cta-cards {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    gap: 25px;
-    margin: 30px 0;
+    gap: 30px;
+    flex-wrap: wrap;
 }
-/* I acknowledge that AI was used to help me apply an animation for our footer, the question asked was 
-"Give me some basic code to add to my css file to make my footer visually appealing and premium fealing with some easy animation 
-and add hover effect to my nav links and arrange my links in such a way that the first 3 links are above and the next 2 below it"*/
+
 .cta-card {
-    background: darkslategrey;
+    display: inline-block;
+    padding: 28px 45px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #fff;
+    background: linear-gradient(135deg, #5b21b6, #06b6d4); /* vibrant gradient */
     border-radius: 18px;
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
-    padding: 25px 40px;
+    text-decoration: none;
     text-align: center;
-    width: 260px;
-    transition: 0.3s ease;
-    border: 2px solid #7b0000;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 22px rgba(0,0,0,0.12);
+    transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+    animation: pulseGlow 4s infinite alternate;
 }
 
 .cta-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
-    background: white;
+    transform: translateY(-10px) scale(1.07);
+    box-shadow: 0 28px 60px rgba(0,0,0,0.25), inset 0 0 14px rgba(255,255,255,0.08);
+    background: linear-gradient(135deg, #7c3aed, #22d3ee); /* hover gradient */
 }
-.cta-card a {
-    display: block;
-    text-decoration: none;
-    color: #4c0000;
-    font-weight: 700;
-    font-size: 1.2rem;
+
+.cta-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -250%;
+    width: 300%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255,255,255,0.25), rgba(255,255,255,0), rgba(255,255,255,0.25));
+    transform: skewX(-25deg);
+    pointer-events: none;
+    transition: all 0.7s ease;
 }
+
+.cta-card:hover::after {
+    left: 100%;
+    transition: left 0.5s ease-in-out;
+}
+
+@keyframes pulseGlow {
+    0% { box-shadow: 0 22px 44px rgba(0,0,0,0.28), inset 0 0 12px rgba(0,0,0,0.05); }
+    50% { box-shadow: 0 22px 44px rgba(0,0,0,0.28), 0 0 15px rgba(255,255,255,0.2), inset 0 0 12px rgba(0,0,0,0.05); }
+    100% { box-shadow: 0 22px 44px rgba(0,0,0,0.28), inset 0 0 12px rgba(0,0,0,0.05); }
+}
+
+@media (max-width: 768px) {
+    .cta-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cta-card {
+        width: 80%;
+        max-width: 360px;
+        margin: 15px auto;
+        transform: none !important;
+        animation: none !important;
+    }
+
+    .cta-card::after {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cta-card {
+        transition: none;
+        animation: none;
+    }
+}
+
+
+
 /* I acknowledge that AI was used to help me apply an animation for my links on homepage, the question asked was 
 "Give me some basic code to add to my css file to make my links like a card and visually appealing an and add hover effect to my 
 nav links"*/
