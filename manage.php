@@ -304,7 +304,7 @@ mysqli_close($conn);
               if(!empty($r["skill2"])) $skills_out[]=$r["skill2"];
               if(!empty($r["skill3"])) $skills_out[]=$r["skill3"];
               if(!empty($r["other_skills"])) $skills_out[]="Other";
-              echo sanitize(implode(", ",$skills_out): "None");
+              echo sanitize(implode(", ",$skills_out));
             ?>
           </td>
           <td data-label="Status"><?php echo sanitize($r["status"]); ?></td>

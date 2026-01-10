@@ -7,26 +7,33 @@ include "header.inc";
 <main>
     <section id="intro">
         <h1>About Us</h1>
+
         <p>
             We are a group of young, passionate students studying computer science named 
             <strong>"Against all Odds"</strong> who are enthusiastic about web development 
             and cyber security.
-        <p>To create outstanding and user-friendly web solutions, our 
-            team combines skills in <strong>HTML,CSS, and project management.</strong>
-        </p>We cherish collaborating on creative projects while discovering new technology 
+        </p>
+
+        <p>
+            To create outstanding and user-friendly web solutions, our 
+            team combines skills in <strong>HTML, CSS, and project management.</strong>
+        </p>
+
+        <p>
+            We cherish collaborating on creative projects while discovering new technology 
             together.
         </p>
     </section>
 
     <section id="group-photos" class="images">
        <figure>
-            <img src="images/groupphoto.jpg" alt="Group photo of all team members" 
+            <img src="images\grouphpoto.jpg" alt="Group photo of all team members" 
             width="300">
             <figcaption>Our Group Photo</figcaption>
         </figure>
         <figure>
             <img src="images/mohammad.jpg" alt="Mohammad Jassim smiling" width="300">
-            <figcaption>Our Group Photo</figcaption>
+            <figcaption>Mr.Mohammad</figcaption>
         </figure>
     </section>
 
@@ -114,7 +121,6 @@ include "header.inc";
                     <li><abbr title="Cascading Style Sheets">CSS</abbr></li>
                     <li><abbr title="Structured Query Language">MySQL</abbr></li>
                     <li><abbr title="Hypertext Preprocessor">PHP</abbr></li>
-                    <li> MySQL</li>
                     <li> Ruby</li>       
             </dd>
 
@@ -124,7 +130,7 @@ include "header.inc";
                     <li>Python</li>
                     <li><abbr title="HyperText Markup Language">HTML</abbr></li>
                     <li><abbr title="Cascading Style Sheets">CSS</abbr></li>
-<                   <li><abbr title="Structured Query Language">MySQL</abbr></li>
+                   <li><abbr title="Structured Query Language">MySQL</abbr></li>
                     <li><abbr title="Hypertext Preprocessor">PHP</abbr></li>
                     <li> Ruby</li>
             </dd>
@@ -145,7 +151,6 @@ include "header.inc";
     <section id="member-info">
         <h2>Members' Information</h2>
         <table>
-            <caption>Members' Information</caption>
             <thead>
                 <tr>
                     <th scope="col">Student Name</th>
