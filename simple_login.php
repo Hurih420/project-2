@@ -131,7 +131,10 @@ mysqli_close($conn);
     </fieldset>
   </form>
 
-  <p><a href="index.php">Back to Home</a></p>
+  <div class="back-home">
+  <a href="index.php">Back to Home</a>
+  </div>
+
 </section>
 </main>
 </body>

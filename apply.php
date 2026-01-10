@@ -6,7 +6,7 @@ include 'header.inc';
 <main>
 <section>
     <h1>Apply to Join Our Cybersecurity Team!</h1>
-    <p>
+    <p class="no-hover">
         We are looking for Cybersecurity Specialists to fill roles in 
         <strong>Ethical Hacking</strong>, <strong>Security Analysis</strong>, or 
         <strong>Threat Hunting</strong>.
@@ -33,11 +33,11 @@ include 'header.inc';
 <legend>Personal Information</legend>
 
 <label for="firstname">First Name</label>
-<input type="text" id="firstname" name="first_name" maxlength="20" placeholder="Mark" 
+<input type="text" id="firstname" name="first_name" maxlength="20" placeholder="e.g. Mark" 
 pattern="[A-Za-z'-]{1,20}" required>
 
 <label for="lastname">Last Name</label>
-<input type="text" id="lastname" name="last_name" maxlength="20" placeholder="Evans" 
+<input type="text" id="lastname" name="last_name" maxlength="20" placeholder="e.g. Evans" 
 pattern="[A-Za-z'-]{1,20}" required>
 
 <label for="dob">Date of Birth</label>
@@ -89,7 +89,7 @@ postcode" inputmode="numeric" required>
 <legend>Contact Information</legend>
 
 <label for="email">Email</label>
-<input type="email" id="email" name="email" required>
+<input type="email" id="email" name="email" placeholder="e.g. markevans1998@example.com" required>
 
 <label for="phone">Phone Number</label>
 <input type="tel" inputmode="numeric" id="phone" name="phone" pattern="^\d{8}$"

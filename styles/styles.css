@@ -687,126 +687,254 @@ body#HomePage #roles h2::after {
 "Give me some basic code to add to my css file to make my links like a card and visually appealing an and add hover effect to my 
 nav links"*/
 /* I acknowledge that I used AI to figure out how to make my form similar to that of google forms. I asked it "How can I make my HTML apply page look a lot similar to google forms using CSS?" */
+/*apply.php css*/
 body#ApplyPage {
-    background-color: #f3f7fa;
+    background: linear-gradient(135deg, #f0f8ff, #f7f0ff);
+    font-family: "Segoe UI", system-ui, sans-serif;
+    color: #1a1a1a;
+    line-height: 1.6;
+    transition: background 0.3s ease;
 }
 
 #ApplyPage main {
-    max-width: 900px;
-    margin: 32px auto 40px;
-    padding: 24px 28px 32px;
-    background-color: #ffffff;
-    border-radius: 16px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    max-width: 960px;
+    margin: 70px auto;
+    padding: 50px;
+    border-radius: 28px;
+    background: #ffffff;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.08), 0 8px 20px rgba(0,0,0,0.05);
+    animation: fadeLift 0.6s ease-out;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-#ApplyPage h1 {
-    margin-top: 0;
-    margin-bottom: 8px;
-    font-size: 1.7rem;
+#ApplyPage main:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.12), 0 10px 24px rgba(0,0,0,0.06);
+}
+
+#ApplyPage section:first-of-type {
+    background: linear-gradient(135deg, #4f46e5, #a78bfa);
+    color: #ffffff;
+    padding: 60px 30px;
+    border-radius: 26px;
+    margin-bottom: 50px;
+    text-align: center;
+    box-shadow: 0 15px 36px rgba(0,0,0,0.2);
+    transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
+}
+
+#ApplyPage section:first-of-type:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+    filter: brightness(1.08);
+}
+
+#ApplyPage section:first-of-type h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 16px;
+    letter-spacing: 0.4px;
+}
+
+#ApplyPage section:first-of-type p {
+    font-size: 1.2rem;
+    color: #fefefe;
+    max-width: 720px;
+    margin: 0 auto;
 }
 
 #ApplyPage h2 {
-    margin-top: 0;
-    margin-bottom: 12px;
-    font-size: 1.3rem;
+    font-size: 1.65rem;
+    margin: 36px 0 24px;
+    color: #1a1a1a;
+    border-left: 5px solid #4f46e5;
+    padding-left: 14px;
 }
 
 #ApplyPage form {
     display: flex;
     flex-direction: column;
-    gap: 24px;
-    padding: 0;
+    gap: 36px;
 }
 
 #ApplyPage fieldset {
+    padding: 36px;
+    border-radius: 24px;
     border: 1px solid #e0e0e0;
-    padding: 16px 18px 20px;
-    border-radius: 12px;
-    background-color: #fafafa;
+    background: linear-gradient(145deg, #ffffff, #f9f9f9);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.3s ease;
+}
+
+#ApplyPage fieldset:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 36px rgba(0,0,0,0.12);
+    background: linear-gradient(145deg, #fefefe, #f4f4f4);
 }
 
 #ApplyPage legend {
     font-weight: 600;
-    color: #00704A;
-    padding: 0 4px;
     font-size: 1rem;
-}
-
-#ApplyPage p {
-    margin-bottom: 12px;
+    color: #4f46e5;
+    padding: 6px 18px;
+    border-radius: 999px;
+    background: #e0e7ff;
+    border: 1px solid #c7d2fe;
 }
 
 #ApplyPage label {
     display: block;
+    margin-top: 16px;
     margin-bottom: 6px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
 }
 
-#ApplyPage input[type="text"],
-#ApplyPage input[type="email"],
-#ApplyPage input[type="tel"],
+#ApplyPage label:hover {
+    color: #a78bfa;
+}
+
+#ApplyPage input,
 #ApplyPage select,
 #ApplyPage textarea {
     width: 100%;
-    box-sizing: border-box;
-    padding: 10px 12px;
-    margin-bottom: 4px;
-    border: 1px solid #b0c4de;
-    background-color: #ffffff;
-    color: #222222;
-    border-radius: 8px;
+    padding: 16px 18px;
+    border-radius: 12px;
+    border: 1px solid #d1d5db;
+    background: #ffffff;
     font-size: 0.95rem;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    color: #1a1a1a;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    position: relative;
+    transition: all 0.3s ease;
 }
 
-#ApplyPage input[type="text"]:focus,
-#ApplyPage input[type="email"]:focus,
-#ApplyPage input[type="tel"]:focus,
-#ApplyPage select:focus,
+#ApplyPage input, #ApplyPage textarea {
+    border: none;
+    border-bottom: 2px solid #d1d5db;
+    border-radius: 0;
+}
+
+#ApplyPage input:focus,
 #ApplyPage textarea:focus {
     outline: none;
-    border-color: #00704A;
-    box-shadow: 0 0 0 3px rgba(0,112,74,0.18);
+    border-bottom: 2px solid #4f46e5;
+    box-shadow: 0 2px 6px rgba(79,70,229,0.2);
+    transform: translateY(-2px) scale(1.02);
 }
 
-#ApplyPage input[type="checkbox"],
-#ApplyPage input[type="radio"] {
+#ApplyPage input:hover,
+#ApplyPage select:hover,
+#ApplyPage textarea:hover {
+    border-bottom-color: #a78bfa;
+    transform: translateY(-2px) scale(1.01);
+}
+
+#ApplyPage input::placeholder,
+#ApplyPage textarea::placeholder {
+    color: #9ca3af;
+    transition: all 0.25s ease;
+}
+
+#ApplyPage input:focus::placeholder,
+#ApplyPage textarea:focus::placeholder {
+    color: #6366f1;
+    font-style: italic;
+}
+
+#ApplyPage input[type="radio"],
+#ApplyPage input[type="checkbox"] {
+    accent-color: #a78bfa;
+    transform: scale(1.1);
     margin-right: 8px;
 }
 
-#ApplyPage button[type="submit"] {
-    padding: 12px 32px;
-    background-color: #00704A;
-    color: #ffffff;
+#ApplyPage button {
+    font-size: 1rem;
     font-weight: 600;
     border-radius: 999px;
+    padding: 14px 48px;
     border: none;
     cursor: pointer;
-    font-size: 1rem;
-    display: inline-block;
-    transition: background-color 0.2s ease, transform 0.1s ease;
+    transition: all 0.3s ease;
+}
+
+#ApplyPage button[type="submit"] {
+    background: linear-gradient(90deg, #4f46e5, #a78bfa);
+    color: #ffffff;
+    box-shadow: 0 14px 28px rgba(79,70,229,0.35);
 }
 
 #ApplyPage button[type="submit"]:hover {
-    background-color: #005c3c;
-    transform: translateY(-1px);
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 18px 36px rgba(79,70,229,0.45);
+    filter: brightness(1.05);
 }
 
-#ApplyPage button[type="submit"]:active {
+#ApplyPage button[type="reset"] {
+    background: lightseagreen; 
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(249,115,22,0.35);
+}
+
+#ApplyPage button[type="reset"]:hover {
+    background: lightseagreen; 
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 6px 18px rgba(234,88,12,0.45);
+}
+
+@keyframes fadeLift {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 640px) {
+    #ApplyPage main {
+        padding: 36px 22px;
+    }
+
+    #ApplyPage section:first-of-type h1 {
+        font-size: 2.4rem;
+    }
+
+    #ApplyPage button {
+        width: 100%;
+    }
+}
+
+#ApplyPage section:first-of-type p {
+    position: relative;
     transform: translateY(0);
+    transition: none !important;
 }
 
-#ApplyPage fieldset:last-of-type p:last-child {
-    text-align: center;
-}
-form label {
-    display: block;
-    margin-top: 10px;
+#ApplyPage section:first-of-type:hover p {
+    transform: translateY(5px); 
 }
 
-form input, form select {
-    width: 100%;
+/*Added this to fix the checkbox alignment*/
+#ApplyPage input[type="checkbox"],
+#ApplyPage input[type="radio"] {
+    width: auto;
+    margin: 0 10px 0 0;
+    vertical-align: middle;
 }
+
+#ApplyPage input[type="checkbox"] + label,
+#ApplyPage input[type="radio"] + label {
+    display: inline-block;
+    margin: 0 0 10px 0;
+    vertical-align: middle;
+}
+
+/*Added this to make sure each option shows up in its own line*/
+#ApplyPage input[type="checkbox"] + label,
+#ApplyPage input[type="radio"] + label {
+    width: calc(100% - 30px);
+}
+
+
 
 /*jobs.html css*/
 body#Jobs_Page {
@@ -1217,230 +1345,656 @@ body#about-page #group-photos figcaption {
     color: brown;          
 }
 
+/* =========================
+   Base Page
+========================= */
+body#ManagePage {
+    background: linear-gradient(135deg, #ecfeff, #f0fdfa);
+    font-family: "Segoe UI", system-ui, sans-serif;
+    color: #1f2937;
+    line-height: 1.6;
+}
 
-/*manage.php css*/
+/* =========================
+   Main Container
+========================= */
 #ManagePage main {
-    padding: 1rem;
+    max-width: 1100px;
+    margin: 70px auto;
+    padding: 50px;
+    border-radius: 28px;
+    background: rgba(255,255,255,0.95);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+    animation: fadeLift 0.6s ease-out;
+}
+
+/* =========================
+   Hero Section
+========================= */
+#ManagePage section:first-of-type {
+    background: linear-gradient(135deg, #0f766e, #34d399);
+    color: #ffffff;
+    padding: 60px 30px;
+    border-radius: 26px;
+    margin-bottom: 50px;
+    text-align: center;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#ManagePage section:first-of-type:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 26px 55px rgba(0,0,0,0.3);
+}
+
+#ManagePage section:first-of-type h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+/* =========================
+   Headings
+========================= */
+#ManagePage h2 {
+    font-size: 1.55rem;
+    margin: 36px 0 24px;
+    color: #0f766e;
+    border-left: 5px solid #34d399;
+    padding-left: 14px;
+}
+
+/* =========================
+   Messages
+========================= */
+#ManagePage .message {
+    padding: 16px 20px;
+    border-radius: 14px;
+    margin-bottom: 24px;
+    font-weight: 500;
+}
+
+#ManagePage .message.error {
+    background: #fee2e2;
+    color: #991b1b;
+    border-left: 5px solid #dc2626;
+}
+
+#ManagePage .message.success {
+    background: #dcfce7;
+    color: #065f46;
+    border-left: 5px solid #16a34a;
+}
+
+/* =========================
+   Forms & Fieldsets
+========================= */
+#ManagePage form {
+    margin-bottom: 36px;
 }
 
 #ManagePage fieldset {
-    border: 1px solid #e0e0e0;
-    padding: 16px 18px 20px;
-    border-radius: 12px;
-    background-color: #fafafa;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    margin-bottom: 24px;
+    padding: 34px;
+    border-radius: 24px;
+    border: 1px solid #d1fae5;
+    background: #ffffff;
+    box-shadow: 0 12px 26px rgba(0,0,0,0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+#ManagePage fieldset:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 36px rgba(0,0,0,0.12);
 }
 
 #ManagePage legend {
     font-weight: 600;
-    color: #00704A;
-    padding: 0 6px;
+    font-size: 0.95rem;
+    color: #0f766e;
+    padding: 6px 18px;
+    border-radius: 999px;
+    background: #ecfeff;
+    border: 1px solid #99f6e4;
 }
 
+/* =========================
+   Labels
+========================= */
 #ManagePage label {
     display: block;
+    margin-top: 16px;
     margin-bottom: 6px;
-    font-weight: 600;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #374151;
 }
 
-#ManagePage input[type="text"],
+/* =========================
+   Inputs / Select
+========================= */
+#ManagePage input,
 #ManagePage select {
     width: 100%;
-    box-sizing: border-box;
-    padding: 10px 12px;
-    margin-bottom: 12px;
-    border: 1px solid #b0c4de;
-    border-radius: 8px;
-    font-size: 1rem;
+    padding: 14px 18px;
+    border-radius: 14px;
+    border: 1px solid #99f6e4;
+    background: #f8fafc;
+    font-size: 0.95rem;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
 }
 
+#ManagePage input:hover,
+#ManagePage select:hover {
+    border-color: #34d399;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(16,185,129,0.25);
+}
+
+#ManagePage input:focus,
+#ManagePage select:focus {
+    outline: none;
+    border-color: #0f766e;
+    box-shadow: 0 0 0 3px rgba(15,118,110,0.25);
+    background: #ffffff;
+}
+
+/* =========================
+   Buttons
+========================= */
 #ManagePage button {
-    background-color: #00704A;
-    color: white;
+    margin-top: 20px;
+    font-size: 0.95rem;
+    font-weight: 600;
     border-radius: 999px;
-    padding: 10px 20px;
+    padding: 12px 40px;
     border: none;
     cursor: pointer;
-    transition: all 0.2s ease;
-    font-size: 1rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
 }
 
-#ManagePage button:hover {
-    background-color: #005c3c;
-    transform: translateY(-1px) scale(1.02);
+/* Primary buttons */
+#ManagePage button[type="submit"] {
+    background: linear-gradient(90deg, #0f766e, #34d399);
+    color: #ffffff;
+    box-shadow: 0 10px 24px rgba(16,185,129,0.4);
 }
 
-.message {
-    padding: 14px 18px;
-    border-radius: 10px;
-    margin: 16px 0;
-    font-weight: 600;
+#ManagePage button[type="submit"]:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 16px 36px rgba(16,185,129,0.5);
+    filter: brightness(1.05);
 }
 
-.message.success {
-    background-color: #e6ffed;
-    border-left: 6px solid #00704A;
-}
-
-.message.error {
-    background-color: #ffe6e6;
-    border-left: 6px solid darkred;
-}
-
-.message ul {
-    margin: 0;
-    padding-left: 18px;
-}
-
+/* =========================
+   Table Styling
+========================= */
 #ManagePage table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
-    background-color: white;
+    margin-top: 30px;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 14px 32px rgba(0,0,0,0.1);
 }
 
 #ManagePage thead {
-    background-color: #00704A;
-    color: white;
+    background: #0f766e;
+    color: #ffffff;
 }
 
 #ManagePage th,
 #ManagePage td {
-    padding: 12px;
-    border-bottom: 1px solid #ddd;
+    padding: 14px 16px;
     text-align: left;
-    vertical-align: top;
+    font-size: 0.9rem;
+}
+
+#ManagePage tbody tr {
+    background: #ffffff;
+    transition: background 0.2s ease;
+}
+
+#ManagePage tbody tr:nth-child(even) {
+    background: #f0fdfa;
 }
 
 #ManagePage tbody tr:hover {
-    background-color: #f3f7fa;
+    background: #ecfeff;
 }
 
-#ManagePage td form {
-    display: flex;
-    gap: 8px;
-    align-items: center;
+/* =========================
+   Fade Animation
+========================= */
+@keyframes fadeLift {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-#ManagePage td form select {
-    min-width: 110px;
-}
-
+/* =========================
+   Responsive
+========================= */
 @media (max-width: 768px) {
-
-    #ManagePage table,
-    #ManagePage thead,
-    #ManagePage tbody,
-    #ManagePage tr {
-        display: block;
+    #ManagePage main {
+        padding: 36px 22px;
     }
 
-    #ManagePage thead {
-        display: none;
+    #ManagePage table {
+        font-size: 0.85rem;
+    }
+}
+
+/* =========================
+   Base Page
+========================= */
+body#ManagePage {
+    background: linear-gradient(135deg, #ecfeff, #f0fdfa);
+    font-family: "Segoe UI", system-ui, sans-serif;
+    color: #1f2937;
+    line-height: 1.6;
+}
+
+/* =========================
+   Main Container
+========================= */
+#ManagePage main {
+    max-width: 1100px;
+    margin: 70px auto;
+    padding: 50px;
+    border-radius: 28px;
+    background: rgba(255,255,255,0.95);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+    animation: fadeLift 0.6s ease-out;
+}
+
+/* =========================
+   Hero Section
+========================= */
+#ManagePage section:first-of-type {
+    background: linear-gradient(135deg, #0f766e, #34d399);
+    color: #ffffff;
+    padding: 60px 30px;
+    border-radius: 26px;
+    margin-bottom: 50px;
+    text-align: center;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#ManagePage section:first-of-type:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 26px 55px rgba(0,0,0,0.3);
+}
+
+#ManagePage section:first-of-type h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+/* =========================
+   Headings
+========================= */
+#ManagePage h2 {
+    font-size: 1.55rem;
+    margin: 36px 0 24px;
+    color: #0f766e;
+    border-left: 5px solid #34d399;
+    padding-left: 14px;
+}
+
+/* =========================
+   Messages
+========================= */
+#ManagePage .message {
+    padding: 16px 20px;
+    border-radius: 14px;
+    margin-bottom: 24px;
+    font-weight: 500;
+}
+
+#ManagePage .message.error {
+    background: #fee2e2;
+    color: #991b1b;
+    border-left: 5px solid #dc2626;
+}
+
+#ManagePage .message.success {
+    background: #dcfce7;
+    color: #065f46;
+    border-left: 5px solid #16a34a;
+}
+
+/* =========================
+   Forms & Fieldsets
+========================= */
+#ManagePage form {
+    margin-bottom: 36px;
+}
+
+#ManagePage fieldset {
+    padding: 34px;
+    border-radius: 24px;
+    border: 1px solid #d1fae5;
+    background: #ffffff;
+    box-shadow: 0 12px 26px rgba(0,0,0,0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+#ManagePage fieldset:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 36px rgba(0,0,0,0.12);
+}
+
+#ManagePage legend {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #0f766e;
+    padding: 6px 18px;
+    border-radius: 999px;
+    background: #ecfeff;
+    border: 1px solid #99f6e4;
+}
+
+/* =========================
+   Labels
+========================= */
+#ManagePage label {
+    display: block;
+    margin-top: 16px;
+    margin-bottom: 6px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #374151;
+}
+
+/* =========================
+   Inputs / Select
+========================= */
+#ManagePage input,
+#ManagePage select {
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 14px;
+    border: 1px solid #99f6e4;
+    background: #f8fafc;
+    font-size: 0.95rem;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+}
+
+#ManagePage input:hover,
+#ManagePage select:hover {
+    border-color: #34d399;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(16,185,129,0.25);
+}
+
+#ManagePage input:focus,
+#ManagePage select:focus {
+    outline: none;
+    border-color: #0f766e;
+    box-shadow: 0 0 0 3px rgba(15,118,110,0.25);
+    background: #ffffff;
+}
+
+/* =========================
+   Buttons
+========================= */
+#ManagePage button {
+    margin-top: 20px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 999px;
+    padding: 12px 40px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+/* Primary buttons */
+#ManagePage button[type="submit"] {
+    background: linear-gradient(90deg, #0f766e, #34d399);
+    color: #ffffff;
+    box-shadow: 0 10px 24px rgba(16,185,129,0.4);
+}
+
+#ManagePage button[type="submit"]:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 16px 36px rgba(16,185,129,0.5);
+    filter: brightness(1.05);
+}
+
+/* =========================
+   Table Styling
+========================= */
+#ManagePage table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 14px 32px rgba(0,0,0,0.1);
+}
+
+#ManagePage thead {
+    background: #0f766e;
+    color: #ffffff;
+}
+
+#ManagePage th,
+#ManagePage td {
+    padding: 14px 16px;
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+#ManagePage tbody tr {
+    background: #ffffff;
+    transition: background 0.2s ease;
+}
+
+#ManagePage tbody tr:nth-child(even) {
+    background: #f0fdfa;
+}
+
+#ManagePage tbody tr:hover {
+    background: #ecfeff;
+}
+
+/* =========================
+   Fade Animation
+========================= */
+@keyframes fadeLift {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================
+   Responsive
+========================= */
+@media (max-width: 768px) {
+    #ManagePage main {
+        padding: 36px 22px;
     }
 
-    #ManagePage tr {
-        background-color: #fafafa;
-        border-radius: 10px;
-        padding: 12px;
-        margin-bottom: 16px;
-        box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-    }
-
-    #ManagePage td {
-        display: block;
-        padding: 6px 0;
-        border: none;
-        white-space: normal;
-    }
-
-    #ManagePage td::before {
-        content: attr(data-label);
-        font-weight: 600;
-        color: #00704A;
-        display: block;
-        margin-bottom: 2px;
-    }
-
-    #ManagePage td form {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    #ManagePage button {
-        width: 100%;
+    #ManagePage table {
+        font-size: 0.85rem;
     }
 }
 
 
 /*We can change the CSS for login later on, for now I'm keep it like this.*/
-#LoginPage main {
-    max-width: 600px;
-    margin: 32px auto 40px;
-    padding: 24px 28px 32px;
-    background-color: #ffffff;
-    border-radius: 16px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+/* ===================================== */
+/* Manager Login – Clean Premium Redesign */
+/* ===================================== */
+
+body#LoginPage {
+    background: linear-gradient(135deg, #eef2f7, #e5ebf3);
+    font-family: "Segoe UI", system-ui, sans-serif;
+    color: #1f2937;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
 }
 
-#LoginPage fieldset {
-    border: 1px solid #e0e0e0;
-    padding: 16px 18px 20px;
-    border-radius: 12px;
-    background-color: #fafafa;
+/* Main layout container */
+#LoginPage main {
+    width: 90%;
+    max-width: 780px;
+    background: #ffffff;
+    border-radius: 30px;
+    box-shadow: 0 35px 80px rgba(0,0,0,0.12);
+    overflow: hidden; /* fixes odd header edges */
 }
+
+/* ================= HEADER ================= */
+
+#LoginPage section > h1 {
+    background: linear-gradient(135deg, #1e293b, #334155);
+    color: #ffffff;
+    padding: 64px 48px;
+    margin: 0;
+    text-align: center;
+    font-size: 2.9rem;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+}
+
+/* ================= FORM ================= */
+
+#LoginPage form {
+    padding: 56px 64px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+}
+
+/* Remove visual fieldset clutter */
+#LoginPage fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Keep semantics, hide visually */
+#LoginPage legend {
+    position: absolute;
+    left: -9999px;
+}
+
+/* ================= INPUTS ================= */
 
 #LoginPage label {
-    display: block;
-    margin-bottom: 6px;
+    font-size: 0.95rem;
     font-weight: 600;
+    color: #334155;
+    margin-bottom: 8px;
+    display: block;
 }
 
-#LoginPage input[type="text"],
-#LoginPage input[type="password"] {
+/* Modern filled input (Google-style) */
+#LoginPage input {
     width: 100%;
-    box-sizing: border-box;
-    padding: 10px 12px;
-    margin-bottom: 12px;
-    border: 1px solid #b0c4de;
-    border-radius: 8px;
+    padding: 16px 18px;
     font-size: 1rem;
+    border-radius: 14px;
+    border: 1px solid #d1d5db;
+    background: #f8fafc;
+    color: #0f172a;
+    transition: border 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
 }
 
-#LoginPage button {
-    background-color: #00704A;
-    color: white;
-    border-radius: 999px;
-    padding: 10px 20px;
+#LoginPage input:focus {
+    outline: none;
+    background: #ffffff;
+    border-color: #c08457; /* copper */
+    box-shadow: 0 0 0 4px rgba(192,132,87,0.2);
+}
+
+/* ================= ERROR MESSAGE ================= */
+
+#LoginPage .message.error {
+    margin: 0 64px;
+    background: #fff1f2;
+    color: #9f1239;
+    padding: 18px 22px;
+    border-radius: 16px;
+    font-weight: 500;
+    border-left: 6px solid #e11d48;
+}
+
+/* ================= BUTTON ================= */
+
+#LoginPage button[type="submit"] {
+    margin-top: 8px;
+    width: 100%;
+    padding: 18px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    border-radius: 16px;
     border: none;
     cursor: pointer;
-    transition: all 0.2s ease;
-    font-size: 1rem;
+    background: linear-gradient(90deg, #c08457, #e6b089);
+    color: #1f2937;
+    box-shadow: 0 18px 40px rgba(192,132,87,0.35);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-#LoginPage button:hover {
-    background-color: #005c3c;
-    transform: translateY(-1px) scale(1.02);
+#LoginPage button[type="submit"]:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 26px 60px rgba(192,132,87,0.45);
 }
 
-/*Added this to fix the checkbox alignment*/
-#ApplyPage input[type="checkbox"],
-#ApplyPage input[type="radio"] {
-    width: auto;
-    margin: 0 10px 0 0;
-    vertical-align: middle;
+/* ================= BACK TO HOME CARD ================= */
+
+#LoginPage .back-home {
+    display: flex;
+    justify-content: center;
+    padding: 44px 0 56px;
 }
 
-#ApplyPage input[type="checkbox"] + label,
-#ApplyPage input[type="radio"] + label {
-    display: inline-block;
-    margin: 0 0 10px 0;
-    vertical-align: middle;
+#LoginPage .back-home a {
+    background: #1e293b;
+    color: #ffffff;
+    padding: 16px 42px;
+    border-radius: 14px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.3s ease, background 0.3s ease;
 }
 
-/*Added this to make sure each option shows up in its own line*/
-#ApplyPage input[type="checkbox"] + label,
-#ApplyPage input[type="radio"] + label {
-    width: calc(100% - 30px);
+#LoginPage .back-home a:hover {
+    transform: translateY(-5px);
+    background: #c08457;
 }
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+    #LoginPage form {
+        padding: 40px 28px;
+    }
+
+    #LoginPage section > h1 {
+        font-size: 2.2rem;
+        padding: 48px 24px;
+    }
+
+    #LoginPage .message.error {
+        margin: 0 28px;
+    }
+}
+
