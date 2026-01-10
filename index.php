@@ -5,7 +5,7 @@ include 'header.inc';
     
         <main>
 
-            <section>
+            <section class="intro">
                 <h1><b><i><u>Looking for Cybersecurity Specialists</u></i></b></h1>
                 <p>
                     <strong>One Studio</strong> is looking for passionate and experienced 
@@ -78,4 +78,5 @@ include 'header.inc';
                         </a>
                     </div>
                 </div>
+        </main>
 <?php include 'footer.inc'; ?>

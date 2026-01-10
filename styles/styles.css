@@ -11,6 +11,9 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
     font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     margin: 0;
     padding: 0;
     color: #222222;
@@ -20,6 +23,7 @@ body {
 main {
     max-width: 1000px;
     margin: 0 auto;
+    flex: 1;
     padding: 24px 16px 40px;
 }
 
@@ -122,7 +126,7 @@ my nav links and arrange my links in such a way that the first 3 links are above
 footer {
     width: 100%;
     padding: 60px 0;
-    background: linear-gradient(135deg, blueviolet ,coral, midnightblue);
+    background: linear-gradient(135deg, blueviolet, coral, midnightblue);
     text-align: center;
     font-family: "Poppins", sans-serif;
     box-shadow: 0 -6px 35px rgba(0, 0, 0, 0.6);
@@ -142,13 +146,15 @@ footer a {
     backdrop-filter: blur(8px);
     box-shadow: 0 0 12px rgba(0, 255, 170, 0.2);
 }
+
 footer a:hover {
     color: #002820;
     background: #00d68f;
     border-color: #00d68f;
     box-shadow: 0 0 20px #00d68f;
     transform: translateY(-3px);
-}/* I acknowledge that AI was used to help me apply an animation for our header, the question asked was 
+}
+/* I acknowledge that AI was used to help me apply an animation for our header, the question asked was 
 "Give me some basic code to add to my css file to make my header attractive with some easy animation and add hover effect to 
 my nav links and arrange my links in such a way that the first 3 links are above and the next 2 below it"*/
 
@@ -242,19 +248,113 @@ body#HomePage li {
     text-align: center;
 }
 
+body#HomePage section:first-of-type {
+    position: relative;
+    text-align: center;
+    padding: 80px 20px 100px 20px;
+    overflow: hidden;
+}
+
+body#HomePage section:first-of-type::before,
+body#HomePage section:first-of-type::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.15;
+    z-index: 0;
+}
+
+body#HomePage section:first-of-type::before {
+    width: 350px;
+    height: 350px;
+    background: #38bdf8;
+    top: -50px;
+    left: -100px;
+    animation: float1 12s infinite ease-in-out alternate;
+}
+
+body#HomePage section:first-of-type::after {
+    width: 400px;
+    height: 400px;
+    background: #6366f1;
+    bottom: -100px;
+    right: -150px;
+    animation: float2 15s infinite ease-in-out alternate;
+}
+
+@keyframes float1 {
+    0% { transform: translateY(0) translateX(0) rotate(0deg); }
+    50% { transform: translateY(30px) translateX(20px) rotate(45deg); }
+    100% { transform: translateY(0) translateX(0) rotate(0deg); }
+}
+
+@keyframes float2 {
+    0% { transform: translateY(0) translateX(0) rotate(0deg); }
+    50% { transform: translateY(-20px) translateX(-30px) rotate(-30deg); }
+    100% { transform: translateY(0) translateX(0) rotate(0deg); }
+}
+
+body#HomePage section:first-of-type h1 {
+    position: relative;
+    font-size: 3rem;
+    color: #1e293b;
+    line-height: 1.2;
+    letter-spacing: 1.5px;
+    z-index: 1;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #38bdf8, #6366f1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: fadeInUp 1s ease forwards;
+}
+
+body#HomePage section:first-of-type p {
+    position: relative;
+    font-size: 1.45rem;
+    max-width: 900px;
+    margin: 20px auto;
+    line-height: 1.8;
+    font-weight: 500;
+    color: #1e293b;
+    z-index: 1;
+    animation: fadeInUp 1s ease forwards;
+}
+
+body#HomePage section:first-of-type p:nth-child(2) {
+    animation-delay: 0.2s;
+}
+body#HomePage section:first-of-type p:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+body#HomePage section:first-of-type p strong {
+    color: #0ea5e9;
+    font-weight: 600;
+    position: relative;
+}
+
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
 body#HomePage section p {
     margin-bottom: 1.5rem;
 }
 
-body#HomePage section h1::after {
+body#HomePage section h2::after {
     content: "";
     display: block;
-    width: 80px;
+    width: 150px; 
     height: 3px;
     background: #38bdf8;
     margin: 12px auto 0;
     border-radius: 2px;
 }
+
+
 
 body#HomePage section:first-of-type p {
     color: #111; 
@@ -285,6 +385,7 @@ body#HomePage section#start p:hover {
         background-attachment: scroll;
     }
 }
+
 
 #roles {
     display: grid;
@@ -330,21 +431,18 @@ body#HomePage section#start p:hover {
     border: 2px solid transparent;
 }
 
-/* Card heading */
 #roles article h3 {
     text-align: center;
     margin-bottom: 12px;
     color: #1e293b;
 }
 
-/* Hover effect: lift + fold + pop */
 #roles article:hover {
     transform: rotateX(6deg) rotateY(-6deg) scale(1.05);
     box-shadow: 0 20px 40px rgba(0,0,0,0.25), inset 0 0 10px rgba(0,0,0,0.05);
-    border-color: #38bdf8; /* subtle neon-ish border glow */
+    border-color: #38bdf8; 
 }
 
-/* Shimmer pseudo-element */
 #roles article::after {
     content: "";
     position: absolute;
@@ -358,12 +456,10 @@ body#HomePage section#start p:hover {
     pointer-events: none;
 }
 
-/* Animate shimmer on hover */
 #roles article:hover::after {
     left: 100%;
 }
 
-/* Optional: subtle pulse glow for the border */
 @keyframes pulseGlow {
     0% { box-shadow: 0 20px 40px rgba(0,0,0,0.25), 0 0 0 rgba(56,189,248,0.3); }
     50% { box-shadow: 0 20px 40px rgba(0,0,0,0.25), 0 0 15px rgba(56,189,248,0.5); }
@@ -374,7 +470,6 @@ body#HomePage section#start p:hover {
     animation: pulseGlow 1.2s infinite;
 }
 
-/* Responsive: stack on mobile */
 @media (max-width: 768px) {
     #roles article {
         transform: none;
@@ -406,6 +501,11 @@ body#HomePage section#start p:hover {
     }
 }
 
+body#HomePage #roles h2::after {
+    content: none;
+}
+
+
 .ethical-hacker {
     flex: 0 0 360px; 
     margin: 0 auto 30px auto; 
@@ -429,6 +529,76 @@ body#HomePage section#start p:hover {
     border-radius: 12px;
     padding: 20px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+#start {
+    text-align: center;
+    padding: 60px 20px;
+    background: #f0f9ff; 
+    border-radius: 16px;
+}
+
+#start h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    background: linear-gradient(90deg, #38bdf8, #6366f1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#start p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 15px auto;
+    line-height: 1.6;
+    color: #1e293b;
+}
+
+#start p strong {
+    color: #3b82f6;
+}
+
+#start time {
+    color: #3b82f6;
+    font-weight: 600;
+    margin-top: 10px;
+    display: inline;
+}
+
+#start .cta-cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+#start .cta-card {
+    background: #6366f1;
+    color: white;
+    padding: 18px 36px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+#start .cta-card:hover {
+    transform: translateY(-5px);
+    background: #38bdf8;
+}
+
+#start .cta-card a {
+    color: inherit;
+    text-decoration: none;
+}
+
+@media(max-width:768px){
+    #start h2 { font-size: 2rem; }
+    #start p { font-size: 1.1rem; }
+    #start .cta-cards { flex-direction: column; align-items: center; }
+    #start .cta-card { width: 80%; max-width: 300px; margin: 10px 0; }
 }
 
 .cta-cards {
