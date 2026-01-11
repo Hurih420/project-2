@@ -44,7 +44,6 @@ section {
     line-height: 1.6;
 }
 
-/* -------------------- Header Container -------------------- */
 header {
     display: flex;
     flex-direction: column;
@@ -56,17 +55,15 @@ header {
     animation: gradientMove 15s ease infinite;
     color: #fff;
     box-shadow: 0 6px 25px rgba(0,0,0,0.35);
-    position: relative; /* needed for top-right button */
+    position: relative; 
 }
 
-/* Gradient Animation */
 @keyframes gradientMove {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
-/* -------------------- Top-right login/logout button -------------------- */
 .header-top-right {
     position: absolute;
     top: 20px;
@@ -90,10 +87,9 @@ header {
     box-shadow: 0 6px 18px rgba(0,255,128,0.4);
 }
 
-/* -------------------- Header Text -------------------- */
 :root {
-    --header-h2-size: 28px;           /* Sub-title */
-    --header-banner-size: 1.5rem;     /* Page banner text */
+    --header-h2-size: 28px;           
+    --header-banner-size: 1.5rem;     
     --header-banner-padding: 15px 40px;
     --header-banner-max-width: 90%;
 }
@@ -121,7 +117,6 @@ header .page-banner {
     max-width: var(--header-banner-max-width);
 }
 
-/* -------------------- Navigation -------------------- */
 header nav ul {
     list-style: none;
     margin: 20px 0 0 0;
@@ -132,7 +127,6 @@ header nav ul {
     gap: 20px; 
 }
 
-/* Top row (first 3 links) and bottom row (next 2 links) */
 header nav ul li:nth-child(-n+3) { flex: 0 0 calc((100% / 3) - 20px); }
 header nav ul li:nth-child(n+4) { flex: 0 0 calc((100% / 2) - 20px); }
 
@@ -157,7 +151,6 @@ header nav a:hover {
     transform: translateY(-3px) scale(1.04);
 }
 
-/* -------------------- Responsive -------------------- */
 @media screen and (max-width: 600px) {
     header nav ul li {
         flex: 0 0 90%;
@@ -220,6 +213,9 @@ aside {
     font-size: 14px;
 }
 /*index.php css*/
+
+/* I acknowledge that AI was used to help me enhance the css for my index.php*/
+
 body {
     line-height: 1.7;
     font-size: 16px;
@@ -741,6 +737,7 @@ body#HomePage #roles h2::after {
 nav links"*/
 /* I acknowledge that I used AI to figure out how to make my form similar to that of google forms. I asked it "How can I make my HTML apply page look a lot similar to google forms using CSS?" */
 /*apply.php css*/
+
 body#ApplyPage {
     background: linear-gradient(135deg, #f0f8ff, #f7f0ff);
     font-family: "Segoe UI", system-ui, sans-serif;
@@ -988,6 +985,8 @@ body#ApplyPage {
 }
 
 /*jobs.php css*/
+
+/* I acknowledge that AI was used to help me enhance the css for my jobs.php*/
 
 body#Jobs_Page {
     margin: 0;
@@ -1267,6 +1266,9 @@ section p:hover {
 
 
 /*about.php css*/
+
+/* I acknowledge that AI was used to help me enhance the css for my about.php*/
+
 body#about-page #intro {
     width: 100%;
     color: #4c1d95;
@@ -1490,6 +1492,8 @@ body#about-page #group-photos figcaption {
 }
 
 /*manage.php css*/
+
+/* I acknowledge that AI was used to help me enhance the css for my manage.php*/
 
 body#ManagePage {
     background: linear-gradient(135deg, #e0f7fa, #ffffff);
@@ -1721,6 +1725,8 @@ body#ManagePage {
 
 /*simple_login.php css*/
 
+/* I acknowledge that AI was used to help me enhance the css for my simple_login.php*/
+
 body#LoginPage {
     background: linear-gradient(135deg, #eef2f7, #e5ebf3);
     font-family: "Segoe UI", system-ui, sans-serif;
@@ -1852,6 +1858,8 @@ body#LoginPage {
 }
 
 /*process_eoi.php css*/
+
+/* I acknowledge that AI was used to help me enhance the css for my process_eoi.php*/
 
 body#ProcessPage {
     font-family: 'Roboto', 'Segoe UI', Tahoma, sans-serif;
@@ -1989,8 +1997,10 @@ body#ProcessPage .message.error h2 {
 
 /*enhancements.php css*/
 
+/* I acknowledge that AI was used to help me enhance the css for my enhancements.php*/
+
 body#EnhancementsPage {
-    background: linear-gradient(135deg, #e0f7fa, #f1f8e9); /* light fresh gradient */
+    background: linear-gradient(135deg, #e0f7fa, #f1f8e9); 
     font-family: "Segoe UI", system-ui, sans-serif;
     color: #1a1a1a;
     line-height: 1.7;
@@ -2095,3 +2105,9 @@ body#EnhancementsPage {
     animation-delay: 0.5s;
 }
 
+body#EnhancementsPage header nav ul,
+body#EnhancementsPage header nav ul li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
