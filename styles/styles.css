@@ -20,6 +20,18 @@ body {
     background-color: #ffffff;
 }
 
+body h1 {
+    font-family: "Segoe UI", system-ui, sans-serif;
+    font-size: 2.8rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-align: center;
+    margin: 0 0 1.5rem 0;
+    padding: 2rem 0; 
+    color: #1e293b;  
+}
+
+
 main {
     max-width: 1000px;
     margin: 0 auto;
@@ -32,6 +44,7 @@ section {
     line-height: 1.6;
 }
 
+/* -------------------- Header Container -------------------- */
 header {
     display: flex;
     flex-direction: column;
@@ -43,19 +56,50 @@ header {
     animation: gradientMove 15s ease infinite;
     color: #fff;
     box-shadow: 0 6px 25px rgba(0,0,0,0.35);
+    position: relative; /* needed for top-right button */
 }
 
-
+/* Gradient Animation */
 @keyframes gradientMove {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
-}/* I acknowledge that AI was used to help me apply an animation for our header, the question asked was 
-"Give me some basic code to add to my css file to make my header attractive with some easy animation and add hover effect to 
-my nav links and arrange my links in such a way that the first 3 links are above and the next 2 below it"*/
+}
+
+/* -------------------- Top-right login/logout button -------------------- */
+.header-top-right {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.header-top-right a.login {
+    background-color: #00b37d;
+    border: 2px solid #fff;
+    font-weight: 700;
+    padding: 10px 22px;
+    font-size: 1rem;
+    border-radius: 14px;
+    transition: all 0.3s ease;
+}
+
+.header-top-right a.login:hover {
+    background-color: #fff;
+    color: #00704A;
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 18px rgba(0,255,128,0.4);
+}
+
+/* -------------------- Header Text -------------------- */
+:root {
+    --header-h2-size: 28px;           /* Sub-title */
+    --header-banner-size: 1.5rem;     /* Page banner text */
+    --header-banner-padding: 15px 40px;
+    --header-banner-max-width: 90%;
+}
 
 header > h2 {
-    font-size: 28px; 
+    font-size: var(--header-h2-size);
     font-weight: 800;
     margin: 10px 0; 
     color: #ffffff;
@@ -64,20 +108,23 @@ header > h2 {
 
 header .page-banner {
     display: inline-block;
-    padding: 15px 40px; 
+    padding: var(--header-banner-padding);
     margin: 15px auto; 
     background-color: #00b37d;
-    font-size: 1.4rem; 
+    font-size: var(--header-banner-size);
     font-weight: 800;
     border-radius: 50px;
     color: #fff;
     text-transform: uppercase;
     box-shadow: 0 0 16px rgba(0,255,128,0.5), 0 4px 18px rgba(0,0,0,0.3);
+    line-height: 1.2;
+    max-width: var(--header-banner-max-width);
 }
 
+/* -------------------- Navigation -------------------- */
 header nav ul {
     list-style: none;
-    margin: 0;
+    margin: 20px 0 0 0;
     padding: 0;
     display: flex;
     flex-wrap: wrap;
@@ -85,14 +132,9 @@ header nav ul {
     gap: 20px; 
 }
 
-header nav ul li:nth-child(-n+3) {
-    flex: 0 0 calc((100% / 3) - 20px);
-}
-header nav ul li:nth-child(n+4) {
-    flex: 0 0 calc((100% / 2) - 20px);
-}/* I acknowledge that AI was used to help me apply an animation for our header, the question asked was 
-"Give me some basic code to add to my css file to make my header attractive with some easy animation and add hover effect to 
-my nav links and arrange my links in such a way that the first 3 links are above and the next 2 below it"*/
+/* Top row (first 3 links) and bottom row (next 2 links) */
+header nav ul li:nth-child(-n+3) { flex: 0 0 calc((100% / 3) - 20px); }
+header nav ul li:nth-child(n+4) { flex: 0 0 calc((100% / 2) - 20px); }
 
 header nav a {
     display: inline-block;
@@ -104,8 +146,8 @@ header nav a {
     background-color: #005f99;
     border: 2px solid #00b37d;
     text-align: center;
-    white-space: nowrap;
     width: 100%;
+    white-space: nowrap;
     transition: all 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -114,12 +156,27 @@ header nav a:hover {
     box-shadow: 0 10px 22px rgba(0,255,128,0.5), 0 6px 16px rgba(0,0,0,0.35);
     transform: translateY(-3px) scale(1.04);
 }
+
+/* -------------------- Responsive -------------------- */
 @media screen and (max-width: 600px) {
     header nav ul li {
         flex: 0 0 90%;
         margin-bottom: 10px;
     }
-}/* I acknowledge that AI was used to help me apply an animation for our header, the question asked was 
+
+    header .page-banner {
+        font-size: 1.3rem !important;
+        padding: 12px 20px;
+    }
+
+    .header-top-right a.login-btn {
+        padding: 8px 16px;
+        font-size: 0.95rem;
+    }
+}
+
+
+/* I acknowledge that AI was used to help me apply an animation for our header, the question asked was 
 "Give me some basic code to add to my css file to make my header attractive with some easy animation and add hover effect to 
 my nav links and arrange my links in such a way that the first 3 links are above and the next 2 below it"*/
 
@@ -162,7 +219,7 @@ aside {
     font-family: Verdana, sans-serif;
     font-size: 14px;
 }
-/*index.html css*/
+/*index.php css*/
 body {
     line-height: 1.7;
     font-size: 16px;
@@ -936,13 +993,6 @@ body#ApplyPage {
 
 /*jobs.php css*/
 
-/* ------------------------------
-Jobs Page CSS - Full Enhanced Version
------------------------------- */
-
-/* ------------------------------
-Body & Overall Theme
------------------------------- */
 body#Jobs_Page {
     margin: 0;
     padding: 0;
@@ -952,9 +1002,6 @@ body#Jobs_Page {
     line-height: 1.6;
 }
 
-/* ------------------------------
-Headings
------------------------------- */
 #Jobs_Page h1, #Jobs_Page h2, #Jobs_Page h3, #Jobs_Page h4 {
     margin: 0 0 12px 0;
 }
@@ -967,9 +1014,6 @@ Headings
     text-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 
-/* ------------------------------
-Intro Section
------------------------------- */
 #Jobs_Page > aside:first-of-type {
     background: linear-gradient(145deg, #e0f7fa, #ffffff);
     padding: 40px 30px;
@@ -989,9 +1033,6 @@ Intro Section
     box-shadow: 0 18px 35px rgba(0,0,0,0.15);
 }
 
-/* ------------------------------
-Job Cards
------------------------------- */
 #Jobs_Page .job-card {
     display: flex;
     align-items: center;
@@ -1017,7 +1058,6 @@ Job Cards
     flex-direction: row-reverse;
 }
 
-/* Job Image */
 #Jobs_Page .job-image {
     width: 350px;
     height: 350px;
@@ -1039,7 +1079,6 @@ Job Cards
     transform: scale(1.08) rotate(1.5deg);
 }
 
-/* Job Text Box */
 #Jobs_Page .job-text {
     flex: 1;
     background-color: #fdfaf7;
@@ -1078,7 +1117,6 @@ Job Cards
     color: #558b2f;
 }
 
-/* Section Paragraph */
 section p {
     font-size: 1.2rem;
     font-weight: 500;
@@ -1094,9 +1132,6 @@ section p:hover {
     transform: scale(1.05);
 }
 
-/* ------------------------------
-Aside Sections - Modern Staggered Style
------------------------------- */
 #Jobs_Page aside {
     max-width: 320px;
     margin: 40px auto;
@@ -1122,9 +1157,6 @@ Aside Sections - Modern Staggered Style
     background: linear-gradient(145deg, #b2f0ec, #ffffff);
 }
 
-/* ------------------------------
-"IF YOU QUALIFY" Box - Big Modern CTA
------------------------------- */
 #Jobs_Page .qualify-box {
     background: linear-gradient(135deg, #fff8e1, #ffe0b2);
     border-left: 8px solid #ff9800;
@@ -1156,7 +1188,6 @@ Aside Sections - Modern Staggered Style
     background: linear-gradient(135deg, #fff3d6, #ffe0b2);
 }
 
-/* Apply Button - Big & Smooth */
 #Jobs_Page .qualify-box .apply-link {
     display: block;
     width: 100%;
@@ -1180,9 +1211,6 @@ Aside Sections - Modern Staggered Style
     box-shadow: 0 18px 40px rgba(0,0,0,0.3);
 }
 
-/* ------------------------------
-CTA Cards (other CTA sections)
------------------------------- */
 .cta-cards {
     display: flex;
     justify-content: center;
@@ -1214,9 +1242,6 @@ CTA Cards (other CTA sections)
     font-size: 1.2rem;
 }
 
-/* ------------------------------
-Responsive Layout
------------------------------- */
 @media screen and (max-width: 1024px) {
     #Jobs_Page .job-card {
         flex-direction: column !important;
@@ -1249,10 +1274,7 @@ Responsive Layout
         font-size: 1.1rem;
     }
 }
-#Jobs_Page section .qualify-box .apply-link {
-    background: mediumorchid !important;
-    color: #fff !important;
-}
+
 
 /*about.php css*/
 body#about-page #intro {
@@ -1479,6 +1501,241 @@ body#about-page #group-photos figcaption {
 
 /*manage.php css*/
 
+body#ManagePage {
+    background: linear-gradient(135deg, #e0f7fa, #ffffff);
+    font-family: "Segoe UI", system-ui, sans-serif;
+    color: #1a1a1a;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+#ManagePage main {
+    max-width: 1150px;
+    margin: 70px auto;
+    padding: 50px;
+    border-radius: 28px;
+    background: #ffffff;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.08), 0 8px 20px rgba(0,0,0,0.05);
+}
+
+#ManagePage h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: #006064;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#ManagePage h2 {
+    font-size: 1.8rem;
+    margin: 36px 0 24px;
+    color: #006064;
+    border-left: 5px solid #00bcd4;
+    padding-left: 14px;
+}
+
+#ManagePage .message {
+    padding: 16px 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+#ManagePage .message.error {
+    background: #ffebee;
+    color: #c62828;
+}
+
+#ManagePage .message.success {
+    background: #e0f2f1;
+    color: #00796b;
+}
+
+#ManagePage fieldset {
+    padding: 36px;
+    border-radius: 24px;
+    border: 1px solid #b2dfdb;
+    background: linear-gradient(145deg, #ffffff, #e0f2f1);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+#ManagePage legend {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #00796b;
+    padding: 6px 18px;
+    border-radius: 999px;
+    background: #b2dfdb;
+    border: 1px solid #80cbc4;
+}
+
+#ManagePage label {
+    display: block;
+    margin-top: 16px;
+    margin-bottom: 6px;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+#ManagePage input,
+#ManagePage select,
+#ManagePage textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 8px;
+    border: 1px solid #80cbc4;
+    background: #ffffff;
+    font-size: 0.95rem;
+    color: #004d40;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    transition: all 0.3s ease;
+}
+
+#ManagePage input:focus,
+#ManagePage select:focus,
+#ManagePage textarea:focus {
+    outline: none;
+    border-color: #00bcd4;
+    box-shadow: 0 2px 6px rgba(0,188,212,0.3);
+    transform: translateY(-2px) scale(1.02);
+}
+
+#ManagePage button {
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 12px;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+#ManagePage button[type="submit"] {
+    background: #00bcd4;
+    color: #fff;
+    box-shadow: 0 6px 12px rgba(0,188,212,0.35);
+}
+
+#ManagePage button[type="submit"]:hover {
+    filter: brightness(1.05);
+}
+
+#ManagePage button[type="reset"] {
+    background: #00796b;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0,121,107,0.35);
+}
+
+#ManagePage button[type="reset"]:hover {
+    filter: brightness(1.1);
+}
+
+#ManagePage table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    table-layout: fixed;
+    font-size: 0.92rem;
+}
+
+#ManagePage th, #ManagePage td {
+    padding: 12px 10px;
+    border: 1px solid #b2dfdb;
+    text-align: left;
+    word-wrap: break-word;
+    vertical-align: middle;
+}
+
+#ManagePage th {
+    background: #00bcd4;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+#ManagePage td {
+    background: #e0f2f1;
+}
+
+#ManagePage table th:nth-child(1),
+#ManagePage table td:nth-child(1) { width: 5%; }   
+#ManagePage table th:nth-child(2),
+#ManagePage table td:nth-child(2) { width: 7%; }   
+#ManagePage table th:nth-child(3),
+#ManagePage table td:nth-child(3) { width: 10%; }  
+#ManagePage table th:nth-child(4),
+#ManagePage table td:nth-child(4) { width: 10%; }   
+#ManagePage table th:nth-child(5),
+#ManagePage table td:nth-child(5) { width: 8%; }   
+#ManagePage table th:nth-child(6),
+#ManagePage table td:nth-child(6) { width: 9%; }   
+#ManagePage table th:nth-child(7),
+#ManagePage table td:nth-child(7) { width: 6%; }   
+#ManagePage table th:nth-child(8),
+#ManagePage table td:nth-child(8) { width: 18%; }  
+#ManagePage table th:nth-child(9),
+#ManagePage table td:nth-child(9) { width: 9%; }  
+#ManagePage table th:nth-child(10),
+#ManagePage table td:nth-child(10) { width: 11%; } 
+#ManagePage table th:nth-child(11),
+#ManagePage table td:nth-child(11) { width: 7%; }  
+#ManagePage table th:nth-child(12),
+#ManagePage table td:nth-child(12) { width: 16%; } 
+
+#ManagePage td form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#ManagePage td form select {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid #80cbc4;
+    font-size: 0.85rem;
+    color: #004d40;
+    min-width: 80px; 
+}
+
+#ManagePage td form button {
+    flex-shrink: 0;
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    background: #00796b;
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(0,121,107,0.35);
+    min-width: 60px; 
+}
+
+#ManagePage td form button:hover {
+    filter: brightness(1.1);
+}
+
+@media (max-width: 1150px) {
+    #ManagePage main {
+        padding: 36px 22px;
+    }
+
+    #ManagePage table th, #ManagePage table td {
+        font-size: 0.85rem;
+        padding: 8px 6px;
+    }
+
+    #ManagePage td form {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    #ManagePage td form select {
+        min-width: 70px;
+    }
+
+    #ManagePage td form button {
+        min-width: 55px;
+    }
+}
+
 
 /*simple_login.php css*/
 
@@ -1500,17 +1757,6 @@ body#LoginPage {
     border-radius: 30px;
     box-shadow: 0 35px 80px rgba(0,0,0,0.12);
     overflow: hidden; 
-}
-
-#LoginPage section > h1 {
-    background: linear-gradient(135deg, #1e293b, #334155);
-    color: #ffffff;
-    padding: 64px 48px;
-    margin: 0;
-    text-align: center;
-    font-size: 2.9rem;
-    font-weight: 800;
-    letter-spacing: 0.4px;
 }
 
 #LoginPage form {
@@ -1622,6 +1868,8 @@ body#LoginPage {
         margin: 0 28px;
     }
 }
+
+/*process_eoi.php css*/
 
 body#ProcessPage {
     font-family: 'Roboto', 'Segoe UI', Tahoma, sans-serif;
@@ -1757,4 +2005,111 @@ body#ProcessPage .message.error h2 {
     }
 }
 
+/*enhancements.php css*/
+
+body#EnhancementsPage {
+    background: linear-gradient(135deg, #e0f7fa, #f1f8e9); /* light fresh gradient */
+    font-family: "Segoe UI", system-ui, sans-serif;
+    color: #1a1a1a;
+    line-height: 1.7;
+    transition: background 0.3s ease;
+}
+
+#EnhancementsPage main {
+    max-width: 960px;
+    margin: 70px auto;
+    padding: 50px;
+    border-radius: 28px;
+    background: #ffffff;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.08), 0 8px 20px rgba(0,0,0,0.05);
+    animation: fadeLift 0.6s ease-out;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#EnhancementsPage main:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.12), 0 10px 24px rgba(0,0,0,0.06);
+}
+
+#EnhancementsPage section {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+}
+
+#EnhancementsPage h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-top: 24px;
+    margin-bottom: 12px;
+    color: #004d40; 
+    border-left: 5px solid #26a69a;
+    padding-left: 14px;
+}
+
+#EnhancementsPage p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    max-width: 850px;
+    margin: 0 auto;
+    color: #1a1a1a;
+}
+
+#EnhancementsPage ul {
+    list-style: disc inside;
+    max-width: 850px;
+    margin: 0 auto;
+    padding-left: 20px;
+}
+
+#EnhancementsPage ul li {
+    font-size: 1rem;
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+#EnhancementsPage strong {
+    color: #00796b;
+}
+
+@keyframes fadeLift {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    #EnhancementsPage main {
+        padding: 36px 22px;
+    }
+
+    #EnhancementsPage h1 {
+        font-size: 2.4rem;
+    }
+
+    #EnhancementsPage h2 {
+        font-size: 1.5rem;
+    }
+
+    #EnhancementsPage p, #EnhancementsPage ul {
+        font-size: 1rem;
+    }
+}
+
+#EnhancementsPage p, #EnhancementsPage ul, #EnhancementsPage h2 {
+    opacity: 0;
+    transform: translateY(8px);
+    animation: fadeLift 0.6s ease-out forwards;
+}
+
+#EnhancementsPage h2 {
+    animation-delay: 0.2s;
+}
+
+#EnhancementsPage p {
+    animation-delay: 0.4s;
+}
+
+#EnhancementsPage ul {
+    animation-delay: 0.5s;
+}
 

@@ -23,5 +23,10 @@ if (session_status() === PHP_SESSION_NONE) {
             <img src="images/GROUPLOGO.png" alt="One Studio logo" title="One Studio" loading="lazy" width="100" class="logo">
             <h2><strong>One Studio</strong></h2>
             <h1 class="page-banner">Explore Interesting Cyber Security Careers</h1>
+            <div class="header-top-right">
+                <?php if(!empty($_SESSION['is_admin']) && $_SESSION['is_admin'] === true): ?>
+                    <a href="logout.php" class="login">Logout</a>
+                <?php endif; ?>
+            </div>
             <?php include "nav.inc"; ?>
         </header>
