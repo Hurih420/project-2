@@ -934,115 +934,151 @@ body#ApplyPage {
     width: calc(100% - 30px);
 }
 
+/*jobs.php css*/
 
+/* ------------------------------
+Jobs Page CSS - Full Enhanced Version
+------------------------------ */
 
-/*jobs.html css*/
+/* ------------------------------
+Body & Overall Theme
+------------------------------ */
 body#Jobs_Page {
     margin: 0;
     padding: 0;
     font-family: "Arial", sans-serif;
-    background-color: #f5f5f5;
-    color: #333333;
-}
-
-#Jobs_Page h1, #Jobs_Page h2, #Jobs_Page h3, #Jobs_Page h4 {
-    margin: 0 0 10px 0;
-}
-
-#Jobs_Page h1 {
-    font: 700 2rem/1.3 "Arial", sans-serif;
-}
-
-#Jobs_Page p, #Jobs_Page ul, #Jobs_Page ol {
-    margin: 10px 0;
+    background: linear-gradient(135deg, #f0f9ff, #e8f6ef);
+    color: #1a1a1a;
     line-height: 1.6;
 }
 
-#Jobs_Page aside {
-    width: 40%;
-    margin: 40px;
-    padding: 15px;
-    float: none;         
-    margin: 40px auto;     
-    display: block;        
-    text-align: center;    
-    background-color: beige;
-    border-radius: 24px;
-    box-shadow: 0 8px 15px rgba(0,0,0,0.05);
-    border: 3px solid  darkslategray;
-}
-  
-#Jobs_Page .job-card,
-#Jobs_Page .security-analyst {
-    display: flex;
-    align-items: flex-start;
-    gap: 25px;
-    width: 90%;
-    margin: 30px auto;
-    padding: 25px;
-    background-color: #ffffff;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    flex-wrap: wrap;
+/* ------------------------------
+Headings
+------------------------------ */
+#Jobs_Page h1, #Jobs_Page h2, #Jobs_Page h3, #Jobs_Page h4 {
+    margin: 0 0 12px 0;
 }
 
-#Jobs_Page .job-card:nth-of-type(even),
-#Jobs_Page .security-analyst:nth-of-type(even) {
+#Jobs_Page h1 {
+    font: 700 2.5rem/1.3 "Arial", sans-serif;
+    text-align: center;
+    color: #0f3d57;
+    margin-bottom: 30px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+/* ------------------------------
+Intro Section
+------------------------------ */
+#Jobs_Page > aside:first-of-type {
+    background: linear-gradient(145deg, #e0f7fa, #ffffff);
+    padding: 40px 30px;
+    margin: 40px auto;
+    max-width: 900px;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    text-align: justify;
+    line-height: 1.7;
+    font-size: 1.1rem;
+    border-left: 8px solid #00704A;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#Jobs_Page > aside:first-of-type:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 18px 35px rgba(0,0,0,0.15);
+}
+
+/* ------------------------------
+Job Cards
+------------------------------ */
+#Jobs_Page .job-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    width: 90%;
+    max-width: 1100px;
+    margin: 50px auto;
+    padding: 25px;
+    background-color: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    flex-wrap: wrap;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#Jobs_Page .job-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+
+#Jobs_Page .job-card:nth-of-type(even) {
     flex-direction: row-reverse;
 }
-/* I acknowledge that AI was used to help me add cards , the question asked was "Give me some basic code to add to my css file to 
-make my jobs sections like a card and alternatively placed like one on left and other on right like the starbucks homepage"*/
+
+/* Job Image */
 #Jobs_Page .job-image {
     width: 350px;
     height: 350px;
-    border-radius: 12px;
+    border-radius: 15px;
     overflow: hidden;
     flex-shrink: 0;
+    border: 4px solid #00704A;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
 
 #Jobs_Page .job-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.4s ease;
+    transition: transform 0.5s ease;
 }
 
 #Jobs_Page .job-image:hover img {
-    transform: scale(1.05) rotate(2deg);
-}
-/* I acknowledge that AI was used to help me add some basic hover effect to my images, the question asked was "Give me some basic 
-code to add to my css file to make my jobs sections' images have a little left right basic movement to make it look cool"*/
-#Jobs_Page .job-text {
-    flex: 1;
-    background-color: #fef4f2;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transform: scale(1.08) rotate(1.5deg);
 }
 
-#Jobs_Page .job-card:nth-of-type(odd) .job-text,
-#Jobs_Page .security-analyst:nth-of-type(odd) .job-text {
-    border-left: 6px solid darkred;
+/* Job Text Box */
+#Jobs_Page .job-text {
+    flex: 1;
+    background-color: #fdfaf7;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+}
+
+#Jobs_Page .job-card:hover .job-text {
+    transform: translateY(-4px);
+}
+
+#Jobs_Page .job-card:nth-of-type(odd) .job-text {
+    border-left: 6px solid #d32f2f;
     border-right: none;
 }
-/* I acknowledge that AI was used to help me add cards , the question asked was "Give me some basic code to add to my css file to 
-make my cards on left and other on right like the have good borders but on left and right"*/
-#Jobs_Page .job-card:nth-of-type(even) .job-text,
-#Jobs_Page .security-analyst:nth-of-type(even) .job-text {
-    border-right: 6px solid cornflowerblue;
+
+#Jobs_Page .job-card:nth-of-type(even) .job-text {
+    border-right: 6px solid #1976d2;
     border-left: none;
 }
 
 #Jobs_Page .job-text h2 {
     color: #00704A;
-}
-#Jobs_Page .job-text h3 {
-    color: darkblue;
-}
-#Jobs_Page .job-text h4 {
-    color: olivedrab;
+    font-size: 1.8rem;
+    margin-bottom: 12px;
 }
 
+#Jobs_Page .job-text h3 {
+    color: #0d3b66;
+    margin-top: 20px;
+}
+
+#Jobs_Page .job-text h4 {
+    color: #558b2f;
+}
+
+/* Section Paragraph */
 section p {
     font-size: 1.2rem;
     font-weight: 500;
@@ -1050,78 +1086,174 @@ section p {
     text-align: center;
     margin-bottom: 20px;
     line-height: 1.5;
-    font-family: Arial, sans-serif;
     transition: color 0.3s ease, transform 0.3s ease; 
-    cursor: default;
 }
 
 section p:hover {
-    color: #00704A;      
-    transform: scale(1.05); 
+    color: #00704A;
+    transform: scale(1.05);
 }
 
+/* ------------------------------
+Aside Sections - Modern Staggered Style
+------------------------------ */
+#Jobs_Page aside {
+    max-width: 320px;
+    margin: 40px auto;
+    padding: 32px 28px;
+    background: linear-gradient(145deg, #d0f7f4, #ffffff);
+    border-radius: 22px;
+    border-left: 6px solid #00bfa5;
+    box-shadow: 0 14px 35px rgba(0,0,0,0.15);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+#Jobs_Page aside:nth-of-type(odd) {
+    transform: translateX(-10px);
+}
+#Jobs_Page aside:nth-of-type(even) {
+    transform: translateX(10px);
+}
+
+#Jobs_Page aside:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+    background: linear-gradient(145deg, #b2f0ec, #ffffff);
+}
+
+/* ------------------------------
+"IF YOU QUALIFY" Box - Big Modern CTA
+------------------------------ */
+#Jobs_Page .qualify-box {
+    background: linear-gradient(135deg, #fff8e1, #ffe0b2);
+    border-left: 8px solid #ff9800;
+    border-radius: 30px;
+    padding: 35px 30px;
+    max-width: 500px;
+    margin: 50px auto;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #bf360c;
+    box-shadow: 0 16px 45px rgba(0,0,0,0.15);
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+#Jobs_Page .qualify-box::before {
+    content: "⚡";
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.8rem;
+}
+
+#Jobs_Page .qualify-box:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+    background: linear-gradient(135deg, #fff3d6, #ffe0b2);
+}
+
+/* Apply Button - Big & Smooth */
+#Jobs_Page .qualify-box .apply-link {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    margin: 25px auto 0 auto;
+    padding: 25px 0;
+    font-size: 1.8rem;
+    font-weight: bold;
+    background: mediumorchid;
+    color: #fff;
+    border-radius: 30px;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+#Jobs_Page .qualify-box .apply-link:hover {
+    background: teal;
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.3);
+}
+
+/* ------------------------------
+CTA Cards (other CTA sections)
+------------------------------ */
 .cta-cards {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     gap: 25px;
-    margin: 30px 0;
+    margin: 40px 0;
 }
 
 .cta-card {
-    background: darkslategrey;
+    background: #00704A;
+    color: #fff;
     border-radius: 18px;
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
     padding: 25px 40px;
     text-align: center;
     width: 260px;
-    transition: 0.3s ease;
-    border: 2px solid #7b0000;
+    font-weight: bold;
+    transition: 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
 }
 
 .cta-card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
-    background: white;
+    background: #004d35;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.25);
 }
 
 .cta-card a {
-    display: block;
     text-decoration: none;
-    color: #4c0000;
-    font-weight: 700;
+    color: #fff;
     font-size: 1.2rem;
 }
-@media screen and (max-width: 900px) {
-    #Jobs_Page .job-card,
-    #Jobs_Page .security-analyst {
+
+/* ------------------------------
+Responsive Layout
+------------------------------ */
+@media screen and (max-width: 1024px) {
+    #Jobs_Page .job-card {
         flex-direction: column !important;
-        text-align: left;
+        text-align: center;
     }
-/* I acknowledge that AI was used to help me add cards ,the question asked was "Give me some basic code to add to my css file to 
-make my jobs sections like a card and alternatively placed like one on left and other on right like the starbucks homepage and add
-some good simplified movement to it like some hover effects and good alignment"*/
     #Jobs_Page .job-image {
         width: 80%;
         height: auto;
-    }
-
-    #Jobs_Page header h1 {
-        font-size: 22px;
-        padding: 12px 20px;
+        margin: 0 auto 20px;
     }
 }
 
-@media screen and (max-width: 500px) {
-    header nav ul {
-        gap: 16px;
+@media screen and (max-width: 600px) {
+    #Jobs_Page aside,
+    #Jobs_Page > aside:first-of-type {
+        width: 90%;
+        padding: 22px;
     }
-
-    #Jobs_Page header h1 {
-        font-size: 20px;
-        padding: 10px 15px;
+    #Jobs_Page .qualify-box {
+        width: 90%;
+        padding: 25px;
+    }
+    #Jobs_Page .qualify-box .apply-link {
+        font-size: 1.5rem;
+        padding: 20px 0;
+    }
+    .cta-card {
+        width: 200px;
+        padding: 20px;
+        font-size: 1.1rem;
     }
 }
+#Jobs_Page section .qualify-box .apply-link {
+    background: mediumorchid !important;
+    color: #fff !important;
+}
+
 /*about.php css*/
 body#about-page #intro {
     width: 100%;
@@ -1345,499 +1477,10 @@ body#about-page #group-photos figcaption {
     color: brown;          
 }
 
-/* =========================
-   Base Page
-========================= */
-body#ManagePage {
-    background: linear-gradient(135deg, #ecfeff, #f0fdfa);
-    font-family: "Segoe UI", system-ui, sans-serif;
-    color: #1f2937;
-    line-height: 1.6;
-}
-
-/* =========================
-   Main Container
-========================= */
-#ManagePage main {
-    max-width: 1100px;
-    margin: 70px auto;
-    padding: 50px;
-    border-radius: 28px;
-    background: rgba(255,255,255,0.95);
-    box-shadow: 0 25px 50px rgba(0,0,0,0.1);
-    animation: fadeLift 0.6s ease-out;
-}
-
-/* =========================
-   Hero Section
-========================= */
-#ManagePage section:first-of-type {
-    background: linear-gradient(135deg, #0f766e, #34d399);
-    color: #ffffff;
-    padding: 60px 30px;
-    border-radius: 26px;
-    margin-bottom: 50px;
-    text-align: center;
-    box-shadow: 0 18px 40px rgba(0,0,0,0.25);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-#ManagePage section:first-of-type:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 26px 55px rgba(0,0,0,0.3);
-}
-
-#ManagePage section:first-of-type h1 {
-    font-size: 2.8rem;
-    font-weight: 800;
-    margin-bottom: 12px;
-}
-
-/* =========================
-   Headings
-========================= */
-#ManagePage h2 {
-    font-size: 1.55rem;
-    margin: 36px 0 24px;
-    color: #0f766e;
-    border-left: 5px solid #34d399;
-    padding-left: 14px;
-}
-
-/* =========================
-   Messages
-========================= */
-#ManagePage .message {
-    padding: 16px 20px;
-    border-radius: 14px;
-    margin-bottom: 24px;
-    font-weight: 500;
-}
-
-#ManagePage .message.error {
-    background: #fee2e2;
-    color: #991b1b;
-    border-left: 5px solid #dc2626;
-}
-
-#ManagePage .message.success {
-    background: #dcfce7;
-    color: #065f46;
-    border-left: 5px solid #16a34a;
-}
-
-/* =========================
-   Forms & Fieldsets
-========================= */
-#ManagePage form {
-    margin-bottom: 36px;
-}
-
-#ManagePage fieldset {
-    padding: 34px;
-    border-radius: 24px;
-    border: 1px solid #d1fae5;
-    background: #ffffff;
-    box-shadow: 0 12px 26px rgba(0,0,0,0.08);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-#ManagePage fieldset:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 18px 36px rgba(0,0,0,0.12);
-}
-
-#ManagePage legend {
-    font-weight: 600;
-    font-size: 0.95rem;
-    color: #0f766e;
-    padding: 6px 18px;
-    border-radius: 999px;
-    background: #ecfeff;
-    border: 1px solid #99f6e4;
-}
-
-/* =========================
-   Labels
-========================= */
-#ManagePage label {
-    display: block;
-    margin-top: 16px;
-    margin-bottom: 6px;
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: #374151;
-}
-
-/* =========================
-   Inputs / Select
-========================= */
-#ManagePage input,
-#ManagePage select {
-    width: 100%;
-    padding: 14px 18px;
-    border-radius: 14px;
-    border: 1px solid #99f6e4;
-    background: #f8fafc;
-    font-size: 0.95rem;
-    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
-}
-
-#ManagePage input:hover,
-#ManagePage select:hover {
-    border-color: #34d399;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 14px rgba(16,185,129,0.25);
-}
-
-#ManagePage input:focus,
-#ManagePage select:focus {
-    outline: none;
-    border-color: #0f766e;
-    box-shadow: 0 0 0 3px rgba(15,118,110,0.25);
-    background: #ffffff;
-}
-
-/* =========================
-   Buttons
-========================= */
-#ManagePage button {
-    margin-top: 20px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    border-radius: 999px;
-    padding: 12px 40px;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
-}
-
-/* Primary buttons */
-#ManagePage button[type="submit"] {
-    background: linear-gradient(90deg, #0f766e, #34d399);
-    color: #ffffff;
-    box-shadow: 0 10px 24px rgba(16,185,129,0.4);
-}
-
-#ManagePage button[type="submit"]:hover {
-    transform: translateY(-2px) scale(1.03);
-    box-shadow: 0 16px 36px rgba(16,185,129,0.5);
-    filter: brightness(1.05);
-}
-
-/* =========================
-   Table Styling
-========================= */
-#ManagePage table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 30px;
-    border-radius: 18px;
-    overflow: hidden;
-    box-shadow: 0 14px 32px rgba(0,0,0,0.1);
-}
-
-#ManagePage thead {
-    background: #0f766e;
-    color: #ffffff;
-}
-
-#ManagePage th,
-#ManagePage td {
-    padding: 14px 16px;
-    text-align: left;
-    font-size: 0.9rem;
-}
-
-#ManagePage tbody tr {
-    background: #ffffff;
-    transition: background 0.2s ease;
-}
-
-#ManagePage tbody tr:nth-child(even) {
-    background: #f0fdfa;
-}
-
-#ManagePage tbody tr:hover {
-    background: #ecfeff;
-}
-
-/* =========================
-   Fade Animation
-========================= */
-@keyframes fadeLift {
-    from {
-        opacity: 0;
-        transform: translateY(14px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* =========================
-   Responsive
-========================= */
-@media (max-width: 768px) {
-    #ManagePage main {
-        padding: 36px 22px;
-    }
-
-    #ManagePage table {
-        font-size: 0.85rem;
-    }
-}
-
-/* =========================
-   Base Page
-========================= */
-body#ManagePage {
-    background: linear-gradient(135deg, #ecfeff, #f0fdfa);
-    font-family: "Segoe UI", system-ui, sans-serif;
-    color: #1f2937;
-    line-height: 1.6;
-}
-
-/* =========================
-   Main Container
-========================= */
-#ManagePage main {
-    max-width: 1100px;
-    margin: 70px auto;
-    padding: 50px;
-    border-radius: 28px;
-    background: rgba(255,255,255,0.95);
-    box-shadow: 0 25px 50px rgba(0,0,0,0.1);
-    animation: fadeLift 0.6s ease-out;
-}
-
-/* =========================
-   Hero Section
-========================= */
-#ManagePage section:first-of-type {
-    background: linear-gradient(135deg, #0f766e, #34d399);
-    color: #ffffff;
-    padding: 60px 30px;
-    border-radius: 26px;
-    margin-bottom: 50px;
-    text-align: center;
-    box-shadow: 0 18px 40px rgba(0,0,0,0.25);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-#ManagePage section:first-of-type:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 26px 55px rgba(0,0,0,0.3);
-}
-
-#ManagePage section:first-of-type h1 {
-    font-size: 2.8rem;
-    font-weight: 800;
-    margin-bottom: 12px;
-}
-
-/* =========================
-   Headings
-========================= */
-#ManagePage h2 {
-    font-size: 1.55rem;
-    margin: 36px 0 24px;
-    color: #0f766e;
-    border-left: 5px solid #34d399;
-    padding-left: 14px;
-}
-
-/* =========================
-   Messages
-========================= */
-#ManagePage .message {
-    padding: 16px 20px;
-    border-radius: 14px;
-    margin-bottom: 24px;
-    font-weight: 500;
-}
-
-#ManagePage .message.error {
-    background: #fee2e2;
-    color: #991b1b;
-    border-left: 5px solid #dc2626;
-}
-
-#ManagePage .message.success {
-    background: #dcfce7;
-    color: #065f46;
-    border-left: 5px solid #16a34a;
-}
-
-/* =========================
-   Forms & Fieldsets
-========================= */
-#ManagePage form {
-    margin-bottom: 36px;
-}
-
-#ManagePage fieldset {
-    padding: 34px;
-    border-radius: 24px;
-    border: 1px solid #d1fae5;
-    background: #ffffff;
-    box-shadow: 0 12px 26px rgba(0,0,0,0.08);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-#ManagePage fieldset:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 18px 36px rgba(0,0,0,0.12);
-}
-
-#ManagePage legend {
-    font-weight: 600;
-    font-size: 0.95rem;
-    color: #0f766e;
-    padding: 6px 18px;
-    border-radius: 999px;
-    background: #ecfeff;
-    border: 1px solid #99f6e4;
-}
-
-/* =========================
-   Labels
-========================= */
-#ManagePage label {
-    display: block;
-    margin-top: 16px;
-    margin-bottom: 6px;
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: #374151;
-}
-
-/* =========================
-   Inputs / Select
-========================= */
-#ManagePage input,
-#ManagePage select {
-    width: 100%;
-    padding: 14px 18px;
-    border-radius: 14px;
-    border: 1px solid #99f6e4;
-    background: #f8fafc;
-    font-size: 0.95rem;
-    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
-}
-
-#ManagePage input:hover,
-#ManagePage select:hover {
-    border-color: #34d399;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 14px rgba(16,185,129,0.25);
-}
-
-#ManagePage input:focus,
-#ManagePage select:focus {
-    outline: none;
-    border-color: #0f766e;
-    box-shadow: 0 0 0 3px rgba(15,118,110,0.25);
-    background: #ffffff;
-}
-
-/* =========================
-   Buttons
-========================= */
-#ManagePage button {
-    margin-top: 20px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    border-radius: 999px;
-    padding: 12px 40px;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
-}
-
-/* Primary buttons */
-#ManagePage button[type="submit"] {
-    background: linear-gradient(90deg, #0f766e, #34d399);
-    color: #ffffff;
-    box-shadow: 0 10px 24px rgba(16,185,129,0.4);
-}
-
-#ManagePage button[type="submit"]:hover {
-    transform: translateY(-2px) scale(1.03);
-    box-shadow: 0 16px 36px rgba(16,185,129,0.5);
-    filter: brightness(1.05);
-}
-
-/* =========================
-   Table Styling
-========================= */
-#ManagePage table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 30px;
-    border-radius: 18px;
-    overflow: hidden;
-    box-shadow: 0 14px 32px rgba(0,0,0,0.1);
-}
-
-#ManagePage thead {
-    background: #0f766e;
-    color: #ffffff;
-}
-
-#ManagePage th,
-#ManagePage td {
-    padding: 14px 16px;
-    text-align: left;
-    font-size: 0.9rem;
-}
-
-#ManagePage tbody tr {
-    background: #ffffff;
-    transition: background 0.2s ease;
-}
-
-#ManagePage tbody tr:nth-child(even) {
-    background: #f0fdfa;
-}
-
-#ManagePage tbody tr:hover {
-    background: #ecfeff;
-}
-
-/* =========================
-   Fade Animation
-========================= */
-@keyframes fadeLift {
-    from {
-        opacity: 0;
-        transform: translateY(14px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* =========================
-   Responsive
-========================= */
-@media (max-width: 768px) {
-    #ManagePage main {
-        padding: 36px 22px;
-    }
-
-    #ManagePage table {
-        font-size: 0.85rem;
-    }
-}
+/*manage.php css*/
 
 
-/*We can change the CSS for login later on, for now I'm keep it like this.*/
-/* ===================================== */
-/* Manager Login – Clean Premium Redesign */
-/* ===================================== */
+/*simple_login.php css*/
 
 body#LoginPage {
     background: linear-gradient(135deg, #eef2f7, #e5ebf3);
@@ -1850,17 +1493,14 @@ body#LoginPage {
     padding: 40px 0;
 }
 
-/* Main layout container */
 #LoginPage main {
     width: 90%;
     max-width: 780px;
     background: #ffffff;
     border-radius: 30px;
     box-shadow: 0 35px 80px rgba(0,0,0,0.12);
-    overflow: hidden; /* fixes odd header edges */
+    overflow: hidden; 
 }
-
-/* ================= HEADER ================= */
 
 #LoginPage section > h1 {
     background: linear-gradient(135deg, #1e293b, #334155);
@@ -1873,8 +1513,6 @@ body#LoginPage {
     letter-spacing: 0.4px;
 }
 
-/* ================= FORM ================= */
-
 #LoginPage form {
     padding: 56px 64px 40px;
     display: flex;
@@ -1882,20 +1520,16 @@ body#LoginPage {
     gap: 36px;
 }
 
-/* Remove visual fieldset clutter */
 #LoginPage fieldset {
     border: none;
     padding: 0;
     margin: 0;
 }
 
-/* Keep semantics, hide visually */
 #LoginPage legend {
     position: absolute;
     left: -9999px;
 }
-
-/* ================= INPUTS ================= */
 
 #LoginPage label {
     font-size: 0.95rem;
@@ -1905,7 +1539,6 @@ body#LoginPage {
     display: block;
 }
 
-/* Modern filled input (Google-style) */
 #LoginPage input {
     width: 100%;
     padding: 16px 18px;
@@ -1920,11 +1553,9 @@ body#LoginPage {
 #LoginPage input:focus {
     outline: none;
     background: #ffffff;
-    border-color: #c08457; /* copper */
+    border-color: #c08457; 
     box-shadow: 0 0 0 4px rgba(192,132,87,0.2);
 }
-
-/* ================= ERROR MESSAGE ================= */
 
 #LoginPage .message.error {
     margin: 0 64px;
@@ -1935,8 +1566,6 @@ body#LoginPage {
     font-weight: 500;
     border-left: 6px solid #e11d48;
 }
-
-/* ================= BUTTON ================= */
 
 #LoginPage button[type="submit"] {
     margin-top: 8px;
@@ -1957,8 +1586,6 @@ body#LoginPage {
     transform: translateY(-3px);
     box-shadow: 0 26px 60px rgba(192,132,87,0.45);
 }
-
-/* ================= BACK TO HOME CARD ================= */
 
 #LoginPage .back-home {
     display: flex;
@@ -1981,8 +1608,6 @@ body#LoginPage {
     background: #c08457;
 }
 
-/* ================= RESPONSIVE ================= */
-
 @media (max-width: 768px) {
     #LoginPage form {
         padding: 40px 28px;
@@ -1997,4 +1622,139 @@ body#LoginPage {
         margin: 0 28px;
     }
 }
+
+body#ProcessPage {
+    font-family: 'Roboto', 'Segoe UI', Tahoma, sans-serif;
+    background: linear-gradient(160deg, #f0f7ff, #e0f2f1); 
+    color: #2c3e50;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    line-height: 1.7;
+}
+
+body#ProcessPage main section {
+    max-width: 720px;
+    width: 100%;
+    padding: 3rem 2.5rem;
+    text-align: center;
+    background: linear-gradient(135deg, #ffffff, #f5faff);
+    border-radius: 28px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 18px 35px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+body#ProcessPage main section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.12);
+}
+
+body#ProcessPage h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
+    color: cornflowerblue; 
+}
+
+body#ProcessPage p {
+    font-size: 1.1rem;
+    margin: 0.8rem 0;
+    color: #34495e;
+}
+
+body#ProcessPage .highlight-hover {
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+body#ProcessPage .highlight-hover.email:hover {
+    color: olive; 
+    text-shadow: 0 2px 6px rgba(255,127,80,0.3);
+}
+
+body#ProcessPage .highlight-hover.ref:hover {
+    color: mediumorchid; 
+    text-shadow: 0 2px 6px rgba(13,202,240,0.3);
+}
+
+body#ProcessPage .highlight-hover.eoi:hover {
+    color: mediumspringgreen; 
+    text-shadow: 0 2px 6px rgba(142,68,173,0.3);
+}
+
+body#ProcessPage .highlight-hover.date:hover {
+    color: tomato; 
+    text-shadow: 0 2px 6px rgba(39,174,96,0.3);
+}
+
+body#ProcessPage a.button {
+    display: inline-block;
+    margin: 0.6rem 0.3rem;
+    padding: 0.85rem 2rem;
+    font-weight: 700;
+    border-radius: 30px;
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(135deg, #5b21b6, #06b6d4); 
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.15);
+    transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+}
+
+body#ProcessPage a.button::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -75%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(120deg, rgba(255,255,255,0.35), rgba(255,255,255,0) 70%);
+    transform: rotate(25deg);
+    transition: all 0.6s ease;
+}
+
+body#ProcessPage a.button:hover::after {
+    left: 100%;
+}
+
+body#ProcessPage a.button:hover {
+    transform: translateY(-6px) scale(1.08);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.25), inset 0 0 15px rgba(255,255,255,0.1);
+    background: linear-gradient(135deg, #7c3aed, #22d3ee);
+}
+
+body#ProcessPage .message.success h2 {
+    color: mediumturquoise;
+}
+
+body#ProcessPage .message.error h2 {
+    color: #dc3545;
+}
+
+@media (max-width: 768px) {
+    body#ProcessPage main section {
+        padding: 2rem 1.5rem;
+    }
+
+    body#ProcessPage h2 {
+        font-size: 1.7rem;
+    }
+
+    body#ProcessPage p {
+        font-size: 1rem;
+    }
+
+    body#ProcessPage a.button {
+        width: 90%;
+        padding: 0.7rem 1.8rem;
+    }
+}
+
 

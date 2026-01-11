@@ -14,7 +14,7 @@ if (session_status() === PHP_SESSION_NONE) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="refresh" content="300">
         <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self';"> 
-        <link rel="stylesheet" href="styles/styles.css">
+        <link rel="stylesheet" href="styles\styles.css">
         <title>One Studio Cybersecurity Specialists</title>
     </head>
 

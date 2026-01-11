@@ -236,13 +236,18 @@ if(!isset($jobs["THH03"])){$jobs["THH03"]=["title"=>"Threat Hunter","description
                 </ol>
             </aside>
             <section>
-            <p>If you qualify for any of the above posts</p>
-
-            <div class="cta-cards">
-                <div class="cta-card">
-                <a href="apply.php">Apply Now</a>
+            <section>
+                <div class="qualify-box">
+                If you qualify for any of the above posts
                 </div>
-            </div>
             </section>
+            <section>
+                <div class="cta-cards">
+                    <div class="cta-card">
+                        <a href="apply.php" class="apply-link">Apply Now</a>
+                    </div>
+                </div>
+            </section>
+
         </main>
 <?php include 'footer.inc'; ?>

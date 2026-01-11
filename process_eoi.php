@@ -1,31 +1,47 @@
 <?php
 require_once("settings.php");
-
+$body_id = "ProcessPage";      
+?>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="process_eoi.php page.">
+        <meta name="author" content="Against all odds">
+        <meta name="keywords" content="Cybersecurity, Ethical Hacker, Security Analyst, Threat Hunter, One Studio, Security Jobs">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="refresh" content="300">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self';"> 
+        <link rel="stylesheet" href="styles/styles.css">
+        <title>process_eoi</title>
+    </head>
+    <body id="<?php echo $body_id; ?>">
+        <main>
+            <section>
+<?php
 if($_SERVER["REQUEST_METHOD"]!=="POST"){
-header("Location: apply.php");
-exit();
+    header("Location: apply.php");
+    exit();
 }
 
-function sanitize($data){return htmlspecialchars(stripslashes(trim((string)$data)));}
-function add_error(&$errors,$msg){$errors[]=$msg;}
+function sanitize($data){return htmlspecialchars(stripslashes(trim((string)$data))); }
+function add_error(&$errors,$msg){ $errors[]=$msg; }
 
 $conn=@mysqli_connect($host,$user,$pwd,$dbname);
-if(!$conn){die("<h1>Database connection error</h1><p>Please try again later.</p>");}
+if(!$conn){
+    die("<h1>Database connection error</h1><p>Please try again later.</p>");
+}
 mysqli_set_charset($conn,"utf8mb4");
 
-function clean($data) {
-  return htmlspecialchars(trim($data));
-}
+function clean($data){ return htmlspecialchars(trim($data)); }
 
-$job_ref = clean($_POST["job_ref"]);
+$job_ref = clean($_POST["job_reference"] ?? "");
 $first_name = clean($_POST["first_name"]);
 $last_name = clean($_POST["last_name"]);
 $email = clean($_POST["email"]);
 $phone = clean($_POST["phone"]);
 
-
-
-/*If the table doesn't exist, this'll make one*/
+/* Create table if not exists */
 mysqli_query($conn,"CREATE TABLE IF NOT EXISTS eoi(
 EOInumber INT NOT NULL AUTO_INCREMENT,
 job_ref VARCHAR(5) NOT NULL,
@@ -75,19 +91,18 @@ if(!in_array($job_ref,$allowed_job_refs,true)) add_error($errors,"Invalid job re
 if($first_name==="" || !preg_match("/^[A-Za-z\s'-]{1,20}$/",$first_name)) add_error($errors,"Invalid first name.");
 if($last_name==="" || !preg_match("/^[A-Za-z\s'-]{1,20}$/",$last_name)) add_error($errors,"Invalid last name.");
 
-$dob_dt = DateTime::createFromFormat("d/m/Y", $dob_raw);
-$dob_ok = $dob_dt && $dob_dt->format("d/m/Y") === $dob_raw;
-if ($dob_ok) {
+$dob_dt = DateTime::createFromFormat("Y-m-d", $dob_raw);
+
+if ($dob_dt && $dob_dt->format("Y-m-d") === $dob_raw) {
     $today = new DateTime();
     if ($dob_dt > $today) add_error($errors, "Date of birth cannot be in the future.");
-    $dob_sql = $dob_dt->format("Y-m-d");
+    $dob_sql = $dob_dt->format("Y-m-d"); 
 } else {
-    add_error($errors, "Invalid date of birth. Use dd/mm/yyyy.");
+    add_error($errors, "Invalid date of birth.");
     $dob_sql = "";
-} //Avoids invalid Date Of Birth inputs
+}
 
 if($gender!=="male" && $gender!=="female") add_error($errors,"Please select a gender.");
-
 if($street_address==="" || mb_strlen($street_address)>40) add_error($errors,"Invalid street address.");
 if($suburb==="" || mb_strlen($suburb)>40) add_error($errors,"Invalid suburb.");
 if($state==="" || mb_strlen($state)>10) add_error($errors,"Invalid state.");
@@ -95,17 +110,15 @@ if(!preg_match("/^\d{4}$/",$postcode)) add_error($errors,"Invalid postcode. Must
 if(!in_array($city,$allowed_cities,true)) add_error($errors,"Invalid city.");
 
 if(!preg_match("/^\d{2}$/",$zone_raw)){
-add_error($errors,"Invalid zone. Must be 2 digits.");
-$zone=0;
-}else{$zone=(int)$zone_raw;}
+    add_error($errors,"Invalid zone. Must be 2 digits.");
+    $zone=0;
+}else{ $zone=(int)$zone_raw; }
 
 $email = strtolower($email);
 if($email==="" || !filter_var($email,FILTER_VALIDATE_EMAIL)) add_error($errors,"Invalid email address.");
-//Prevents uppercase emails as duplicates
 if(!preg_match("/^\d{8}$/",$phone)) add_error($errors,"Invalid phone number. Must be 8 digits.");
 
 if(!is_array($skills)) $skills=[];
-$skills=array_values(array_unique(array_map("sanitize",$skills)));
 $skills=array_values(array_unique(array_map("sanitize",$skills)));
 if(count($skills)<1) add_error($errors,"Select at least one technical skill.");
 if(count($skills)>3) add_error($errors,"Select up to three technical skills.");
@@ -118,14 +131,17 @@ $skill3=$skills[2] ?? null;
 
 if($other_skills!=="" && mb_strlen($other_skills)>2000) add_error($errors,"Other skills is too long.");
 
+/* Display errors in styled card if any */
 if(count($errors)>0){
-mysqli_close($conn);
-echo "<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'><title>EOI Errors</title></head><body>";
-echo "<h1>Submission Errors</h1><ul>";
-foreach($errors as $e) echo "<li>".$e."</li>";
-echo "</ul><p><a href='apply.php'>Go back to the form</a></p></body></html>";
-exit();
+    mysqli_close($conn);
+    echo '<div class="message error"><h2>Submission Errors</h2><ul>';
+    foreach($errors as $e) echo '<li>'.$e.'</li>';
+    echo '</ul><p><a href="apply.php" class="button">Go back to the form</a></p></div>';
+    include "footer.inc";
+    exit();
 }
+
+/* Prevent duplicate submission */
 $check = mysqli_prepare($conn, "SELECT EOInumber FROM eoi WHERE email=? AND job_ref=?");
 mysqli_stmt_bind_param($check, "ss", $email, $job_ref);
 mysqli_stmt_execute($check);
@@ -145,6 +161,7 @@ if($last_eoi && strtotime($last_time) > time() - 60){
 }
 mysqli_stmt_close($last_submission_stmt);
 
+/* Insert new EOI */
 $stmt=mysqli_prepare($conn,"
 INSERT INTO eoi
 (job_ref,first_name,last_name,date_of_birth,gender,street_address,suburb,state,postcode,city,zone,email,phone,skill1,skill2,skill3,other_skills,status)
@@ -153,37 +170,37 @@ VALUES
 ");
 
 if(!$stmt){
-mysqli_close($conn);
-die("<h1>Database error</h1><p>Could not prepare statement.</p>");
+    mysqli_close($conn);
+    die("<h1>Database error</h1><p>Could not prepare statement.</p>");
 }
 
 mysqli_stmt_bind_param(
-$stmt,
-"ssssssssssissssss",
-$job_ref,
-$first_name,
-$last_name,
-$dob_sql,
-$gender,
-$street_address,
-$suburb,
-$state,
-$postcode,
-$city,
-$zone,
-$email,
-$phone,
-$skill1,
-$skill2,
-$skill3,
-$other_skills
+    $stmt,
+    "ssssssssssissssss",
+    $job_ref,
+    $first_name,
+    $last_name,
+    $dob_sql,
+    $gender,
+    $street_address,
+    $suburb,
+    $state,
+    $postcode,
+    $city,
+    $zone,
+    $email,
+    $phone,
+    $skill1,
+    $skill2,
+    $skill3,
+    $other_skills
 );
 
 $ok=mysqli_stmt_execute($stmt);
 if(!$ok){
-mysqli_stmt_close($stmt);
-mysqli_close($conn);
-die("<h1>Database error</h1><p>Could not save your application.</p>");
+    mysqli_stmt_close($stmt);
+    mysqli_close($conn);
+    die("<h1>Database error</h1><p>Could not save your application.</p>");
 }
 
 $eoi_number=mysqli_insert_id($conn);
@@ -191,15 +208,18 @@ $eoi_number=mysqli_insert_id($conn);
 mysqli_stmt_close($stmt);
 mysqli_close($conn);
 
-echo "<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'><title>EOI Submitted</title></head><body>";
-echo "<h1>Application Submitted</h1>";
-echo "<p>Thank you, ".htmlspecialchars($first_name).", for your application.</p>";
-echo "<p>Job applied for: ".htmlspecialchars($job_ref)."</p>";
-echo "<p>Confirmation email has been sent to: ".htmlspecialchars($email)."</p>"; 
-echo "<p><strong>Your EOI Number:</strong> ".(int)$eoi_number."</p>";
-echo "<p><strong>Submission date:</strong> ".date('d/m/Y H:i')."</p>";
-echo "<p>We will review your application and get back to you soon.</p>";
-echo "<p><a href='apply.php'>Submit the application again</a></p>";
-echo "<p><a href='index.php'>Return to Home</a></p>";
-echo "</body></html>";
+
 ?>
+<div class="message success">
+    <h2>Application Submitted</h2>
+    <p>Thank you, <?php echo htmlspecialchars($first_name); ?>, for your application.</p>
+    <p>Job applied for: <span class="highlight-hover ref"><?php echo htmlspecialchars($job_ref); ?></span></p>
+    <p>Confirmation email has been sent to: <span class="highlight-hover email"><?php echo htmlspecialchars($email); ?></span></p>
+    <p>We will review your application and get back to you soon.</p><p><strong>Your EOI Number:</strong> <span class="highlight-hover eoi"><?php echo (int)$eoi_number; ?></span></p>
+    <p><strong>Submission date:</strong> <span class="highlight-hover date"><?php echo date('d/m/Y H:i'); ?></span></p>
+    <p><a href='apply.php' class="button">Submit the application again</a></p>
+    <p><a href='index.php' class="button">Return to Home</a></p>
+</div>
+  </section>
+</main>
+
