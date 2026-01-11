@@ -41,7 +41,7 @@ pattern="[A-Za-z'-]{1,20}" required>
 pattern="[A-Za-z'-]{1,20}" required>
 
 <label for="dob">Date of Birth</label>
-<input type="date" id="dob" name="date_of_birth" placeholder="yyyy-mm-dd" required>
+<input type="date" id="dob" name="date_of_birth" required>
 </fieldset>
 
 <fieldset>

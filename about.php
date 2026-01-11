@@ -27,7 +27,7 @@ include "header.inc";
 
     <section id="group-photos" class="images">
        <figure>
-            <img src="images\grouphpoto.jpg" alt="Group photo of all team members" 
+            <img src="images/grouphpoto.jpg" alt="Group photo of all team members" 
             width="300">
             <figcaption>Our Group Photo</figcaption>
         </figure>
@@ -121,7 +121,8 @@ include "header.inc";
                     <li><abbr title="Cascading Style Sheets">CSS</abbr></li>
                     <li><abbr title="Structured Query Language">MySQL</abbr></li>
                     <li><abbr title="Hypertext Preprocessor">PHP</abbr></li>
-                    <li> Ruby</li>       
+                    <li> Ruby</li>   
+                </ul>    
             </dd>
 
             <dt>Omar Alazzawe</dt>
@@ -133,6 +134,7 @@ include "header.inc";
                    <li><abbr title="Structured Query Language">MySQL</abbr></li>
                     <li><abbr title="Hypertext Preprocessor">PHP</abbr></li>
                     <li> Ruby</li>
+                </ul>
             </dd>
 
             <dt>Mohammad Jassim M S Al Suwaidi</dt>
@@ -141,10 +143,9 @@ include "header.inc";
                     <li><abbr title="HyperText Markup Language">HTML</abbr></li>
                     <li><abbr title="Cascading Style Sheets">CSS</abbr></li>
                     <li><abbr title="Structured Query Language">MySQL</abbr></li>
-                    <li><abbr title="HyperText Markup Language">HTML</abbr></li>
                     <li> Ruby</li>
+                </ul>
             </dd>
-            </dt>
         </dl>
     </section>
 

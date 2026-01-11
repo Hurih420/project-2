@@ -2105,9 +2105,3 @@ body#EnhancementsPage {
     animation-delay: 0.5s;
 }
 
-body#EnhancementsPage header nav ul,
-body#EnhancementsPage header nav ul li {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}

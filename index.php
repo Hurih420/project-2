@@ -78,5 +78,6 @@ include 'header.inc';
                         </a>
                     </div>
                 </div>
+            </section>
         </main>
 <?php include 'footer.inc'; ?>
