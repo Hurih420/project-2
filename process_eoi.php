@@ -137,7 +137,6 @@ if(count($errors)>0){
     echo '<div class="message error"><h2>Submission Errors</h2><ul>';
     foreach($errors as $e) echo '<li>'.$e.'</li>';
     echo '</ul><p><a href="apply.php" class="button">Go back to the form</a></p></div>';
-    include "footer.inc";
     exit();
 }
 
